@@ -1,42 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { IAsset, ICollection, ICollections, ICollectionStats } from 'src/shared/interfaces';
+import { IAsset } from 'src/shared/asset.interface';
+import { IAssets } from 'src/shared/assets.interface';
+import { IBundles } from 'src/shared/bundles.interface';
+import { ICollection } from 'src/shared/collection.interface';
+import { ICollectionStats } from 'src/shared/collection.stats.interface';
+import { ICollections } from 'src/shared/collections.interface';
+import { IContract } from 'src/shared/contract.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  baseUrl = "https://api.opensea.io/";
+  baseUrl = "https://api.opensea.io/api/v1";
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
-  public getCollection(slug: string): Observable<ICollection> {
-    const collectionUrl: string = 'api/v1/collection/'
-
-    return this.httpClient.get<ICollection>(this.baseUrl + collectionUrl + slug)
-      .pipe(
-        map(collection => {
-          return collection;
-        })
-      );
-  }
-
-  public getCollections(): Observable<ICollections> {
-    const collectionUrl: string = 'api/v1/collections?offset=0&limit=10'
-
-    return this.httpClient.get<ICollections>(this.baseUrl + collectionUrl)
-      .pipe(
-        map(collections => {
-          return collections;
-        })
-      );
-  }
-
-  public getAsset(): Observable<IAsset> {
-    const assetUrl: string = 'api/v1/asset/0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb/1/?include_orders=false';
+  public getAsset(asset_contract_address: string, token_id: string): Observable<IAsset> {
+    const assetUrl: string = `/asset/${asset_contract_address}/${token_id}/?include_orders=false`;
 
     return this.httpClient.get<IAsset>(this.baseUrl + assetUrl)
     .pipe(
@@ -46,8 +30,41 @@ export class DataService {
     );
   }
 
-  public getCollectionStats(): Observable<ICollectionStats> {
-    const collectionStatsUrl: string = 'api/v1/collection/doodles-official/stats';
+  public getAssets(): Observable<IAssets> {
+    const assetUrl: string = '/assets?order_direction=desc&limit=20&include_orders=false';
+
+    return this.httpClient.get<IAssets>(this.baseUrl + assetUrl)
+    .pipe(
+      map(asset => {
+        return asset;
+      })
+    );
+  }
+
+  public getBundles(): Observable<IBundles> {
+    const bundlesUrl: string = '/bundles?limit=20&offset=0';
+
+    return this.httpClient.get<IBundles>(this.baseUrl + bundlesUrl)
+    .pipe(
+      map(bundles => {
+        return bundles;
+      })
+    );
+  }
+
+  public getCollection(collection_slug: string): Observable<ICollection> {
+    const collectionUrl: string = `/collection/${collection_slug}`;
+
+    return this.httpClient.get<ICollection>(this.baseUrl + collectionUrl)
+      .pipe(
+        map(collection => {
+          return collection;
+        })
+      );
+  }
+
+  public getCollectionStats(collection_slug: string): Observable<ICollectionStats> {
+    const collectionStatsUrl: string = `/collection/${collection_slug}/stats`;
 
     return this.httpClient.get<ICollectionStats>(this.baseUrl + collectionStatsUrl)
     .pipe(
@@ -55,5 +72,27 @@ export class DataService {
         return collectionStats;
       })
     );
+  }
+
+  public getCollections(): Observable<ICollections> {
+    const collectionUrl: string = '/collections?offset=0&limit=10'
+
+    return this.httpClient.get<ICollections>(this.baseUrl + collectionUrl)
+      .pipe(
+        map(collections => {
+          return collections;
+        })
+      );
+  }
+
+  public getContract(asset_contract_address: string): Observable<IContract> {
+    const contractnUrl: string = `/asset_contract/${asset_contract_address}`;
+
+    return this.httpClient.get<IContract>(this.baseUrl + contractnUrl)
+      .pipe(
+        map(contract => {
+          return contract;
+        })
+      );
   }
 }

@@ -1,6 +1,18 @@
-Collections:
-<div *ngIf="collections">
-  <li *ngFor="let c of this.collections.collections">{{ c.slug }}</li>
+Asset:
+<div *ngIf="asset">
+  <li>{{ asset.name }}</li>
+</div>
+<hr />
+Assets:
+<div *ngIf="assets">
+  <div *ngFor="let c of this.assets.assets">
+    <li *ngIf="c.name">{{c.name}}</li>
+  </div>
+</div>
+<hr />
+Bundles:
+<div *ngIf="bundles">
+  <li>{{ bundles.bundles[0].slug }}</li>
 </div>
 <hr />
 Collection:
@@ -13,7 +25,13 @@ CollectionStats:
   <li>{{ collectionStats.stats.one_day_volume }}</li>
 </div>
 <hr />
-Assets:
-<div *ngIf="asset">
-  <li>{{ asset.token_id }}</li>
+Collections:
+<div *ngIf="collections">
+  <li *ngFor="let c of this.collections.collections">{{ c.slug }}</li>
 </div>
+<hr />
+Contract:
+<div *ngIf="contract">
+  <li>{{ contract.name }}</li>
+</div>
+<hr />
