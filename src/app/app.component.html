@@ -1,37 +1,79 @@
-Asset:
-<div *ngIf="asset">
-  <li>{{ asset.name }}</li>
-</div>
-<hr />
-Assets:
-<div *ngIf="assets">
-  <div *ngFor="let c of this.assets.assets">
-    <li *ngIf="c.name">{{c.name}}</li>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Expand at md</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown04">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form role="search">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </div>
+</nav>
+
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      Asset:
+      <div *ngIf="asset">
+        <li>{{ asset.name }}</li>
+      </div>
+      <hr />
+      Assets:
+      <div *ngIf="assets">
+        <div *ngFor="let c of this.assets.assets">
+          <li *ngIf="c.name">{{c.name}}</li>
+        </div>
+      </div>
+      <hr />
+      Bundles:
+      <div *ngIf="bundles">
+        <li>{{ bundles.bundles[0].slug }}</li>
+      </div>
+      <hr />
+      Collection:
+      <div *ngIf="collection">
+        <li>{{ collection.collection.slug }}</li>
+      </div>
+      <hr />
+      CollectionStats:
+      <div *ngIf="collectionStats">
+        <li>{{ collectionStats.stats.one_day_volume }}</li>
+      </div>
+      <hr />
+      Collections:
+      <div *ngIf="collections">
+        <li *ngFor="let c of this.collections.collections">{{ c.slug }}</li>
+      </div>
+      <hr />
+      Contract:
+      <div *ngIf="contract">
+        <li>{{ contract.name }}</li>
+      </div>
+      <hr />
+    </div>
   </div>
 </div>
-<hr />
-Bundles:
-<div *ngIf="bundles">
-  <li>{{ bundles.bundles[0].slug }}</li>
-</div>
-<hr />
-Collection:
-<div *ngIf="collection">
-  <li>{{ collection.collection.slug }}</li>
-</div>
-<hr />
-CollectionStats:
-<div *ngIf="collectionStats">
-  <li>{{ collectionStats.stats.one_day_volume }}</li>
-</div>
-<hr />
-Collections:
-<div *ngIf="collections">
-  <li *ngFor="let c of this.collections.collections">{{ c.slug }}</li>
-</div>
-<hr />
-Contract:
-<div *ngIf="contract">
-  <li>{{ contract.name }}</li>
-</div>
-<hr />
