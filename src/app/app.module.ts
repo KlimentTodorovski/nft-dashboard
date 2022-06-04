@@ -7,10 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from 'src/core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { CollectionsComponent } from './collections/collections.component';
+import { AssetComponent } from './asset/asset.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CollectionsComponent,
+    AssetComponent
   ],
   imports: [
     BrowserModule,
