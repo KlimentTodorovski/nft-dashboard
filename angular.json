@@ -111,5 +111,8 @@
       }
     }
   },
-  "defaultProject": "nft-dashboard"
+  "defaultProject": "nft-dashboard",
+  "cli": {
+    "analytics": false
+  }
 }
