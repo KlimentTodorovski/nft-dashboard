@@ -1,1 +1,12 @@
 <p>collections works!</p>
+<button class="btn-lg btn-info" (click)="goToCollection()">
+  <span>Go to collection and collection assets</span>
+</button>
+
+<div class="row">
+  <div class="col">
+    <div *ngIf="collections">
+      <li *ngFor="let c of this.collections.collections">{{ c.slug }}</li>
+    </div>
+  </div>
+</div>

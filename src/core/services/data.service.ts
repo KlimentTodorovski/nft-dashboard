@@ -19,8 +19,8 @@ export class DataService {
     private httpClient: HttpClient
   ) { }
 
-  public getAsset(asset_contract_address: string, token_id: string): Observable<IAsset> {
-    const assetUrl: string = `/asset/${asset_contract_address}/${token_id}/?include_orders=false`;
+  public getAsset(assetContractAddress: string, tokenId: string): Observable<IAsset> {
+    const assetUrl: string = `/asset/${assetContractAddress}/${tokenId}/?include_orders=false`;
 
     return this.httpClient.get<IAsset>(this.baseUrl + assetUrl)
     .pipe(
@@ -30,8 +30,8 @@ export class DataService {
     );
   }
 
-  public getAssets(): Observable<IAssets> {
-    const assetUrl: string = '/assets?order_direction=desc&limit=20&include_orders=false';
+  public getAssets(collectionSlug: string): Observable<IAssets> {
+    const assetUrl: string = `/assets?order_direction=desc&limit=20&include_orders=false&collection=${collectionSlug}`;
 
     return this.httpClient.get<IAssets>(this.baseUrl + assetUrl)
     .pipe(

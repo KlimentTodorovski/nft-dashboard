@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private getAssets(): void {
     this.subscribtion1 = this.dataService
-      .getAssets()
+      .getAssets('doodles-official')
       .subscribe((assets: IAssets) => {
         this.assets = assets;
       }
