@@ -35,8 +35,9 @@ export class DataService {
 
     return this.httpClient.get<IAssets>(this.baseUrl + assetUrl)
     .pipe(
-      map(asset => {
-        return asset;
+      map(assets => {
+        console.log(assets.assets.length)
+        return assets;
       })
     );
   }
@@ -75,7 +76,7 @@ export class DataService {
   }
 
   public getCollections(): Observable<ICollections> {
-    const collectionUrl: string = '/collections?offset=0&limit=10'
+    const collectionUrl: string = '/collections?limit=100'
 
     return this.httpClient.get<ICollections>(this.baseUrl + collectionUrl)
       .pipe(

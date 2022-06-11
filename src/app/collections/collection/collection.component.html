@@ -1,4 +1,21 @@
-<p>collection works!</p>
+<div class="container">
+  <div class="row" *ngIf="assets">
+    <div class="col" *ngFor="let asset of assets.assets">
+      <mat-card class="card" *ngIf="asset.image_url">
+        <mat-card-title>{{asset.name}}</mat-card-title>
+        <img src={{asset.image_url}} class="img-thumbnail">
+      </mat-card>
+      <br />
+    </div>
+  </div>
+  <div class="row" *ngIf="assets && assets.assets.length === 0">
+    <div class="coll">
+      No assets
+    </div>
+  </div>
+</div>
+
+<!-- <p>collection works!</p>
 <button class="btn-lg btn-info" (click)="goToAsset()">
   <span>Go to asset details</span>
 </button>
@@ -13,4 +30,4 @@ Assets:
   <div *ngFor="let c of this.assets.assets">
     <li *ngIf="c.name">{{c.name}}</li>
   </div>
-</div>
+</div> -->

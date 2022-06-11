@@ -15,6 +15,8 @@ export class CollectionComponent implements OnInit, OnDestroy {
   public collection: ICollection | undefined;
   public assets: IAssets | undefined;
 
+  public slug: string | null = '';
+
   private getCollectionSubscription: Subscription | undefined;
   private getAssetsSubscription: Subscription | undefined;
 
@@ -31,7 +33,14 @@ export class CollectionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getCollection();
-    this.getAssets('doodles-official');
+
+    this.route.paramMap.subscribe(params => {
+      this.slug = params.get('collectionUid');
+    })
+
+    if (this.slug) {
+      this.getAssets(this.slug);
+    }
   }
 
   public goToAsset(): void {

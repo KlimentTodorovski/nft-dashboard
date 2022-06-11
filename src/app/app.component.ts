@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private getAssets(): void {
     this.subscribtion1 = this.dataService
-      .getAssets('doodles-official')
+      .getAssets('')
       .subscribe((assets: IAssets) => {
         this.assets = assets;
       }
@@ -86,7 +86,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private getCollection(): void {
     this.subscribtion4 = this.dataService
-      .getCollection('doodles-official')
+      .getCollection('we-are-all-going-to-die')
       .subscribe((collection: ICollection) => {
         this.collection = collection;
       }
