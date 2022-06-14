@@ -31,12 +31,15 @@ export class DataService {
   }
 
   public getAssets(collectionSlug: string): Observable<IAssets> {
-    const assetUrl: string = `/assets?order_direction=desc&limit=20&include_orders=false&collection=${collectionSlug}`;
+    let assetUrl: string = `/assets?limit=50`;
+
+    if (collectionSlug !== '') {
+      assetUrl = assetUrl + `&collection=${collectionSlug}`;
+    }
 
     return this.httpClient.get<IAssets>(this.baseUrl + assetUrl)
     .pipe(
       map(assets => {
-        console.log(assets.assets.length)
         return assets;
       })
     );

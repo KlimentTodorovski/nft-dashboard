@@ -5,16 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AssetComponent } from './asset/asset.component';
+import { CollectionComponent } from './collection/collection.component';
+import { CoreModule } from 'src/core/core.module';
+import { MaterialExampleModule } from './material/material.module';
+import { CommonModule } from '@angular/common';
+import { AssetsComponent } from './assets/assets.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CollectionComponent,
+    AssetComponent,
+    AssetsComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule,
+    MaterialExampleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

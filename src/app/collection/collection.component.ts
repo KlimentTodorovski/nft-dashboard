@@ -16,6 +16,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
   public assets: IAssets | undefined;
 
   public slug: string | null = '';
+  public gettingData: boolean = true;
 
   private getCollectionSubscription: Subscription | undefined;
   private getAssetsSubscription: Subscription | undefined;
@@ -52,6 +53,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
       .getAssets(collectionSlug)
       .subscribe((assets: IAssets) => {
         this.assets = assets;
+        this.gettingData = false;
       }
     );
   }

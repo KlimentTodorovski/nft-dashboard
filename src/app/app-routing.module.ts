@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AssetsComponent } from './assets/assets.component';
+import { CollectionComponent } from './collection/collection.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/collections'
+    redirectTo: '/assets'
   },
   {
-    path: 'collections',
-    loadChildren: () => import('./collections/collections.module').then(m => m.CollectionsModule)
+    path: 'assets',
+    component: AssetsComponent
+  },
+  {
+    path: 'collections/:collectionSlug/assets',
+    component: CollectionComponent
   },
   {
     path: '**',

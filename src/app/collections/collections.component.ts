@@ -15,7 +15,15 @@ import { MatSort } from '@angular/material/sort';
 })
 export class CollectionsComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  public displayedColumns: string[] = ["name", "one_day_volume", "seven_day_volume", "floor_price", "num_owners", "count"];
+  public displayedColumns: string[] = [
+    "name",
+    "one_day_volume",
+    "seven_day_volume",
+    "thirty_day_volume",
+    "floor_price",
+    "num_owners",
+  ];
+
   public dataSource: MatTableDataSource<Collection> = new MatTableDataSource();
 
   private getCollectionsSubscription: Subscription | undefined;
@@ -39,18 +47,32 @@ export class CollectionsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.getCollections();
-    //this.getCollectionStats();
-  }
 
-  public goToCollection(): void {
-    this.router.navigate([3, 'assets'], {relativeTo: this.route});
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      if (property === 'name') {
+        return item.name;
+      } else if (property === 'one_day_volume') {
+        return item.stats.one_day_volume;
+      } else if (property === 'seven_day_volume') {
+        return item.stats.seven_day_volume;
+      } else if (property === 'thirty_day_volume') {
+        return item.stats.thirty_day_volume;
+      }  else if (property === 'floor_price') {
+         return item.stats.floor_price;
+      } else if (property === 'num_owners') {
+         return item.stats.num_owners;
+      }
+
+      return 0;
+    };
+    //this.getCollectionStats();
   }
 
   private getCollections(): void {
     this.getCollectionsSubscription = this.dataService
       .getCollections()
       .subscribe((collections: ICollections) => {
-        this.dataSource = new MatTableDataSource(collections.collections);
+        this.dataSource.data = collections.collections;
 
         if (this.paginator)
           this.dataSource.paginator = this.paginator;
@@ -67,7 +89,7 @@ export class CollectionsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  public getRecord(row: Collection): void {
+  public goTodetails (row: Collection): void {
     this.router.navigate([row.slug, 'assets'], {relativeTo: this.route});
   }
 }
