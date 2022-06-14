@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
-import { IAsset } from 'src/shared/asset.interface';
-import { IAssets } from 'src/shared/assets.interface';
+import { IAsset } from 'src/shared/models/asset.interface';
+import { IAssets } from 'src/shared/models/assets.interface';
 
 @Component({
   selector: 'app-assets',
@@ -14,6 +14,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
 
   public assets: IAssets | undefined;
   public _assets: IAsset[] = [];
+  public next: string = '';
+  public previous: string = '';
 
   private getAssetsSubscription: Subscription | undefined;
 
@@ -27,14 +29,17 @@ export class AssetsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getAssets('');
+    this.getAssets();
   }
 
-  private getAssets(collectionSlug: string): void {
+  private getAssets(): void {
     this.getAssetsSubscription = this.dataService
-      .getAssets(collectionSlug)
+      .getAssets()
       .subscribe((assets: IAssets) => {
+        console.log(assets);
         this.assets = assets;
+        this.next = assets.next;
+        this.previous = assets.previous;
         this._assets = this._assets.concat(assets.assets.filter(x => x.image_url !== null));
       }
     );
@@ -42,6 +47,6 @@ export class AssetsComponent implements OnInit, OnDestroy {
 
   public openCollection(asset: IAsset) {
     const collectionSlug = asset.collection.slug;
-    this.router.navigate([`/collections/${collectionSlug}/assets`]);
+    this.router.navigate([`/collections/${collectionSlug}`]);
   }
 }

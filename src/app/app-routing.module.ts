@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AssetComponent } from './asset/asset.component';
 import { AssetsComponent } from './assets/assets.component';
 import { CollectionComponent } from './collection/collection.component';
 
@@ -14,7 +15,11 @@ const routes: Routes = [
     component: AssetsComponent
   },
   {
-    path: 'collections/:collectionSlug/assets',
+    path: 'assets/:assets',
+    component: AssetComponent
+  },
+  {
+    path: 'collections/:collectionSlug',
     component: CollectionComponent
   },
   {

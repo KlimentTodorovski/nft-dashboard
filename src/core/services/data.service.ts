@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { IAsset } from 'src/shared/asset.interface';
-import { IAssets } from 'src/shared/assets.interface';
-import { IBundles } from 'src/shared/bundles.interface';
-import { ICollection } from 'src/shared/collection.interface';
-import { ICollectionStats } from 'src/shared/collection.stats.interface';
-import { ICollections } from 'src/shared/collections.interface';
-import { IContract } from 'src/shared/contract.interface';
+import { IAsset } from 'src/shared/models/asset.interface';
+import { IAssets } from 'src/shared/models/assets.interface';
+import { IBundles } from 'src/shared/models/bundles.interface';
+import { ICollection } from 'src/shared/models/collection.interface';
+import { ICollectionStats } from 'src/shared/models/collection.stats.interface';
+import { ICollections } from 'src/shared/models/collections.interface';
+import { IContract } from 'src/shared/models/contract.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +30,10 @@ export class DataService {
     );
   }
 
-  public getAssets(collectionSlug: string): Observable<IAssets> {
-    let assetUrl: string = `/assets?limit=50`;
+  public getAssets(collectionSlug: string | null = null): Observable<IAssets> {
+    let assetUrl: string = `/assets?limit=20&cursor=LXBrPTQ4ODA5NjcxMg==`;
 
-    if (collectionSlug !== '') {
+    if (collectionSlug) {
       assetUrl = assetUrl + `&collection=${collectionSlug}`;
     }
 

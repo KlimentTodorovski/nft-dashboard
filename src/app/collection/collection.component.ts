@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
-import { IAssets } from 'src/shared/assets.interface';
-import { ICollection } from 'src/shared/collection.interface';
+import { IAssets } from 'src/shared/models/assets.interface';
+import { ICollection } from 'src/shared/models/collection.interface';
 
 @Component({
   selector: 'app-collection',
@@ -36,7 +36,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.getCollection();
 
     this.route.paramMap.subscribe(params => {
-      this.slug = params.get('collectionUid');
+      this.slug = params.get('collectionSlug');
     })
 
     if (this.slug) {
@@ -59,11 +59,13 @@ export class CollectionComponent implements OnInit, OnDestroy {
   }
 
   private getCollection(): void {
-    this.getCollectionSubscription = this.dataService
-      .getCollection('doodles-official')
-      .subscribe((collection: ICollection) => {
-        this.collection = collection;
-      }
-    );
+    if (this.slug) {
+      this.getCollectionSubscription = this.dataService
+        .getCollection(this.slug)
+        .subscribe((collection: ICollection) => {
+          this.collection = collection;
+        }
+      );
+    }
   }
 }

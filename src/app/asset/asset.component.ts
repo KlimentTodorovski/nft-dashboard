@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
-import { IAsset } from 'src/shared/asset.interface';
+import { IAsset } from 'src/shared/models/asset.interface';
 
 @Component({
   selector: 'app-asset',

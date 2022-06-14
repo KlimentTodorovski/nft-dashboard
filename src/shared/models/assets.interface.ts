@@ -2,6 +2,6 @@ import { IAsset } from "./asset.interface";
 
 export interface IAssets {
   next:     string;
-  previous: null;
+  previous: string;
   assets:   IAsset[];
 }
