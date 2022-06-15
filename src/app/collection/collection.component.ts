@@ -46,10 +46,6 @@ export class CollectionComponent implements OnInit, OnDestroy {
     }
   }
 
-  public goToAsset(): void {
-    this.router.navigate([3], {relativeTo: this.route});
-  }
-
   private getAssets(): void {
     if (this.slug) {
       this.getAssetsSubscription = this.dataService

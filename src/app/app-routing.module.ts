@@ -15,7 +15,7 @@ const routes: Routes = [
     component: AssetsComponent
   },
   {
-    path: 'assets/:assets',
+    path: 'assets/:assetContractAddress/:tokenId',
     component: AssetComponent
   },
   {

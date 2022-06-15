@@ -1,8 +1,7 @@
 <loading-spinner *ngIf="gettingData"></loading-spinner>
 <div class="container" infinite-scroll (scrolled)="onScrollDown($event)">
   <div class="row">
-    <div class="col-xl-2"
-          *ngFor="let asset of _assets">
+    <div class="col-xl-2" *ngFor="let asset of _assets">
       <div class="card position-relative">
         <div class="card-header small"
              [matTooltip]="asset.name"
@@ -11,7 +10,7 @@
           {{ (asset.name.length > 15) ? (asset.name | slice:0:15)+'...' :(asset.name) }}
         </div>
         <div class="card-img-top pull-left">
-          <img src={{asset.image_url}} class="img-thumbnail" (click)="openCollection(asset)">
+          <img src={{asset.image_url}} class="img-thumbnail" (click)="openDetails(asset)">
         </div>
       </div>
       <br />

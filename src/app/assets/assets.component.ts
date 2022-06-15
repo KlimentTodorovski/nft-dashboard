@@ -44,9 +44,10 @@ export class AssetsComponent implements OnInit, OnDestroy {
     );
   }
 
-  public openCollection(asset: IAsset) {
-    const collectionSlug = asset.collection.slug;
-    this.router.navigate([`/collections/${collectionSlug}`]);
+  public openDetails(asset: IAsset) {
+    const assetContractAddress = asset.asset_contract.address;
+    const tokenId = asset.token_id;
+    this.router.navigate([`/assets/${assetContractAddress}/${tokenId}`]);
   }
 
   public onScrollDown(event: any) {
