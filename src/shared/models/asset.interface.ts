@@ -65,7 +65,7 @@ export interface AssetContract {
 }
 
 export interface Creator {
-  user:            User | null | string;
+  user:            User | null;
   profile_img_url: string;
   address:         string;
   config:          string;

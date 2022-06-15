@@ -14,6 +14,7 @@ export class AssetComponent implements OnInit, OnDestroy {
   public asset: IAsset | undefined;
   public assetContractAddress: string = '';
   public tokenId: string = '';
+  public gettingData: boolean = true;
 
   private getAssetSubscription: Subscription | undefined;
 
@@ -40,6 +41,8 @@ export class AssetComponent implements OnInit, OnDestroy {
       .getAsset(this.assetContractAddress, this.tokenId)
       .subscribe((asset: IAsset) => {
         this.asset = asset;
+        console.log(asset);
+        this.gettingData = false;
       }
     );
   }

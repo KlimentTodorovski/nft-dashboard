@@ -1,5 +1,74 @@
-<p>asset works!</p>
-Asset:
-<div *ngIf="asset">
-  <li>{{ asset.name }}</li>
+<loading-spinner *ngIf="gettingData"></loading-spinner>
+<div class="container">
+  <div class="row" *ngIf="asset">
+    <div class="col">
+      <div class="card-img-top">
+        <img [src]="asset.image_url">
+      </div>
+      <div class="card-body" *ngIf="asset.description; else elseBlock1">
+        {{asset.description}}
+      </div>
+      <ng-template #elseBlock1>
+        <div class="card-footer">
+          No description
+        </div>
+      </ng-template>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          {{asset.name}}
+        </div>
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                Owned by
+              </div>
+              <div class="col" *ngIf="asset.owner.user && asset.owner.user.username !== 'NullAddress'; else elseBlock">
+                {{asset.owner.user.username}}
+              </div>
+              <ng-template #elseBlock>
+                <div class="col">
+                  No owner
+                </div>
+              </ng-template>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                Contract Address
+              </div>
+              <div class="col">
+                {{ (assetContractAddress.length > 30) ? (assetContractAddress | slice:0:30) + '...' : (assetContractAddress) }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                Token ID
+              </div>
+              <div class="col">
+                {{ (tokenId.length > 30) ? (tokenId | slice:0:30) + '...' : (tokenId) }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                Created date
+              </div>
+              <div class="col">
+                {{ asset.asset_contract.created_date }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                Creator
+              </div>
+              <div class="col" *ngIf="asset.creator.user && asset.creator.user.username">
+                {{ asset.creator.user.username }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

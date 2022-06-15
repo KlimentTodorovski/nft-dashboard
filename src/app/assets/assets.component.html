@@ -10,7 +10,7 @@
           {{ (asset.name.length > 15) ? (asset.name | slice:0:15)+'...' :(asset.name) }}
         </div>
         <div class="card-img-top pull-left">
-          <img src={{asset.image_url}} class="img-thumbnail" (click)="openDetails(asset)">
+          <img src={{asset.image_preview_url}} class="img-thumbnail" (click)="openDetails(asset)">
         </div>
       </div>
       <br />
