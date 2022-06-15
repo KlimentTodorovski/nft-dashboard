@@ -14,6 +14,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
   public _assets: IAsset[] = [];
   public next: string = '';
   public previous: string = '';
+  public gettingData: boolean = true;
 
   private getAssetsSubscription: Subscription | undefined;
 
@@ -37,6 +38,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
         this.next = assets.next;
         this.previous = assets.previous;
         this._assets = this._assets.concat(assets.assets.filter(x => x.image_url !== null));
+
+        this.gettingData = false;
       }
     );
   }
@@ -47,10 +50,6 @@ export class AssetsComponent implements OnInit, OnDestroy {
   }
 
   public onScrollDown(event: any) {
-    this.loadMoreAssets();
-  }
-
-  private loadMoreAssets(): void {
     this.getAssets();
   }
 }

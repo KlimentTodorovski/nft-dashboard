@@ -12,13 +12,15 @@ import { MaterialExampleModule } from './material/material.module';
 import { CommonModule } from '@angular/common';
 import { AssetsComponent } from './assets/assets.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CollectionComponent,
     AssetComponent,
-    AssetsComponent
+    AssetsComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
