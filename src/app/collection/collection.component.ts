@@ -20,6 +20,8 @@ export class CollectionComponent implements OnInit, OnDestroy {
 
   private getCollectionSubscription: Subscription | undefined;
   private getAssetsSubscription: Subscription | undefined;
+  private next: string = '';
+  private previous: string = '';
 
   constructor(
     private router: Router,
@@ -40,7 +42,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     })
 
     if (this.slug) {
-      this.getAssets(this.slug);
+      this.getAssets();
     }
   }
 
@@ -48,14 +50,16 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.router.navigate([3], {relativeTo: this.route});
   }
 
-  private getAssets(collectionSlug: string): void {
-    this.getAssetsSubscription = this.dataService
-      .getAssets(collectionSlug)
-      .subscribe((assets: IAssets) => {
-        this.assets = assets;
-        this.gettingData = false;
-      }
-    );
+  private getAssets(): void {
+    if (this.slug) {
+      this.getAssetsSubscription = this.dataService
+        .getAssets(this.next, this.slug)
+        .subscribe((assets: IAssets) => {
+          this.assets = assets;
+          this.gettingData = false;
+        }
+      );
+    }
   }
 
   private getCollection(): void {

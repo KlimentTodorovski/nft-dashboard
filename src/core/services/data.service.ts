@@ -31,7 +31,7 @@ export class DataService {
   }
 
   public getAssets(next: string = '', collectionSlug: string | null = null): Observable<IAssets> {
-    let assetUrl: string = '/assets?limit=20';
+    let assetUrl: string = '/assets?limit=50';
 
     if (next !== '') {
       assetUrl = assetUrl + `&cursor=${next}`;

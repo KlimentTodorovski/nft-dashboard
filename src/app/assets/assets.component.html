@@ -1,10 +1,6 @@
 <div class="container" infinite-scroll (scrolled)="onScrollDown($event)">
   <div class="row">
-    <div class="col-xl-2
-                col-lg-3
-                col-md-4
-                col-sm-6
-                col-12"
+    <div class="col-xl-2"
           *ngFor="let asset of _assets">
       <div class="card position-relative">
         <div class="card-header small"
@@ -15,11 +11,6 @@
         </div>
         <div class="card-img-top pull-left">
           <img src={{asset.image_url}} class="img-thumbnail" (click)="openCollection(asset)">
-        </div>
-        <div class="card-footer">
-          <div>
-            Description:
-          </div>
         </div>
       </div>
       <br />
