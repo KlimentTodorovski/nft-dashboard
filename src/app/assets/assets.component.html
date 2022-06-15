@@ -1,19 +1,28 @@
-<div class="container">
-  <div class="row" *ngIf="assets">
-    <div class="col-xl-3
+<div class="container" infinite-scroll (scrolled)="onScrollDown($event)">
+  <div class="row">
+    <div class="col-xl-2
                 col-lg-3
                 col-md-4
                 col-sm-6
                 col-12"
           *ngFor="let asset of _assets">
       <div class="card position-relative">
-        <div class="card-header small">
-          {{asset.name}}
+        <div class="card-header small"
+             [matTooltip]="asset.name"
+             [matTooltipDisabled]="asset.name.length <= 15"
+             [matTooltipPosition]="'above'">
+          {{ (asset.name.length > 15) ? (asset.name | slice:0:15)+'...' :(asset.name) }}
         </div>
-        <div class="card-body pull-left">
+        <div class="card-img-top pull-left">
           <img src={{asset.image_url}} class="img-thumbnail" (click)="openCollection(asset)">
+        </div>
+        <div class="card-footer">
+          <div>
+            Description:
+          </div>
         </div>
       </div>
       <br />
     </div>
   </div>
+</div>

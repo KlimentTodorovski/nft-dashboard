@@ -30,8 +30,12 @@ export class DataService {
     );
   }
 
-  public getAssets(collectionSlug: string | null = null): Observable<IAssets> {
-    let assetUrl: string = `/assets?limit=20&cursor=LXBrPTQ4ODA5NjcxMg==`;
+  public getAssets(next: string = '', collectionSlug: string | null = null): Observable<IAssets> {
+    let assetUrl: string = '/assets?limit=20';
+
+    if (next !== '') {
+      assetUrl = assetUrl + `&cursor=${next}`;
+    }
 
     if (collectionSlug) {
       assetUrl = assetUrl + `&collection=${collectionSlug}`;

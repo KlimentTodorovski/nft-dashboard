@@ -11,6 +11,7 @@ import { CoreModule } from 'src/core/core.module';
 import { MaterialExampleModule } from './material/material.module';
 import { CommonModule } from '@angular/common';
 import { AssetsComponent } from './assets/assets.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AssetsComponent } from './assets/assets.component';
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
-    MaterialExampleModule
+    MaterialExampleModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

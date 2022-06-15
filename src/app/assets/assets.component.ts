@@ -11,8 +11,6 @@ import { IAssets } from 'src/shared/models/assets.interface';
   styleUrls: ['./assets.component.scss']
 })
 export class AssetsComponent implements OnInit, OnDestroy {
-
-  public assets: IAssets | undefined;
   public _assets: IAsset[] = [];
   public next: string = '';
   public previous: string = '';
@@ -34,10 +32,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
 
   private getAssets(): void {
     this.getAssetsSubscription = this.dataService
-      .getAssets()
+      .getAssets(this.next)
       .subscribe((assets: IAssets) => {
-        console.log(assets);
-        this.assets = assets;
         this.next = assets.next;
         this.previous = assets.previous;
         this._assets = this._assets.concat(assets.assets.filter(x => x.image_url !== null));
@@ -48,5 +44,13 @@ export class AssetsComponent implements OnInit, OnDestroy {
   public openCollection(asset: IAsset) {
     const collectionSlug = asset.collection.slug;
     this.router.navigate([`/collections/${collectionSlug}`]);
+  }
+
+  public onScrollDown(event: any) {
+    this.loadMoreAssets();
+  }
+
+  private loadMoreAssets(): void {
+    this.getAssets();
   }
 }
