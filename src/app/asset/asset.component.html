@@ -39,7 +39,7 @@
                 Contract Address
               </div>
               <div class="col">
-                {{ (assetContractAddress.length > 30) ? (assetContractAddress | slice:0:30) + '...' : (assetContractAddress) }}
+                <a [href]="etherscan">{{ (assetContractAddress.length > 30) ? (assetContractAddress | slice:0:30) + '...' : (assetContractAddress) }}</a>
               </div>
             </div>
             <div class="row">
@@ -64,6 +64,34 @@
               </div>
               <div class="col" *ngIf="asset.creator.user && asset.creator.user.username">
                 {{ asset.creator.user.username }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            Traits
+          </div>
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="container">
+                    <div class="row" *ngFor="let trait of asset.traits">
+                      {{trait.trait_type}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="container">
+                    <div class="row" *ngFor="let trait of asset.traits">
+                     {{trait.value}}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

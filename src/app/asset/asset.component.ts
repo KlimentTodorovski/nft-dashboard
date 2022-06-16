@@ -15,6 +15,7 @@ export class AssetComponent implements OnInit, OnDestroy {
   public assetContractAddress: string = '';
   public tokenId: string = '';
   public gettingData: boolean = true;
+  public etherscan: string = 'https://etherscan.io/address/';
 
   private getAssetSubscription: Subscription | undefined;
 
@@ -30,6 +31,8 @@ export class AssetComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.assetContractAddress = params.get('assetContractAddress')!;
+      this.etherscan += this.assetContractAddress;
+
       this.tokenId = params.get('tokenId')!;
     })
 
