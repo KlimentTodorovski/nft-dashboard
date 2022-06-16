@@ -15,7 +15,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
   public collection: ICollection | undefined;
   public assets: IAssets | undefined;
 
-  public slug: string | null = '';
+  public slug: string = '';
   public gettingData: boolean = true;
 
   private getCollectionSubscription: Subscription | undefined;
@@ -35,13 +35,16 @@ export class CollectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getCollection();
-
     this.route.paramMap.subscribe(params => {
-      this.slug = params.get('collectionSlug');
-    })
+      const collectionSlug = params.get('collectionSlug');
+
+      if (collectionSlug) {
+        this.slug = collectionSlug;
+      }
+    });
 
     if (this.slug) {
+      this.getCollection();
       this.getAssets();
     }
   }

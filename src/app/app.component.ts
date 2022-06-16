@@ -48,13 +48,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getAsset();
-    this.getAssets();
-    this.getBundles();
-    this.getCollection();
-    this.getCollectionStats();
-    this.getCollections();
-    this.getContracts();
+    // this.getAsset();
+    // this.getAssets();
+    // this.getBundles();
+    // this.getCollection();
+    // this.getCollectionStats();
+    // this.getCollections();
+    // this.getContracts();
   }
 
   private getAssets(): void {

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { IAsset } from 'src/shared/models/asset.interface';
@@ -21,7 +21,8 @@ export class AssetComponent implements OnInit, OnDestroy {
 
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnDestroy(): void {
@@ -48,5 +49,11 @@ export class AssetComponent implements OnInit, OnDestroy {
         this.gettingData = false;
       }
     );
+  }
+
+  public openCollection(): void {
+    if (this.asset) {
+      this.router.navigate([`/collections/${this.asset.collection.slug}`]);
+    }
   }
 }

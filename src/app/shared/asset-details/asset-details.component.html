@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-header">
+    {{name}}
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          Owned by
+        </div>
+        <div class="col" *ngIf="owner && owner !== 'NullAddress'; else elseBlock">
+          {{owner}}
+        </div>
+        <ng-template #elseBlock>
+          <div class="col">
+            No owner
+          </div>
+        </ng-template>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          Contract Address
+        </div>
+        <div class="col">
+          <a [href]="etherscan">{{ (contractAddress.length > 30) ? (contractAddress | slice:0:30) + '...' : (contractAddress) }}</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          Token ID
+        </div>
+        <div class="col">
+          {{ (tokenId.length > 30) ? (tokenId | slice:0:30) + '...' : (tokenId) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          Created date
+        </div>
+        <div class="col">
+          {{ createdDate }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          Creator
+        </div>
+        <div class="col">
+          {{ creator }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

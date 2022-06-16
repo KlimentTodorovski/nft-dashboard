@@ -44,6 +44,7 @@ export class DataService {
     return this.httpClient.get<IAssets>(this.baseUrl + assetUrl)
     .pipe(
       map(assets => {
+        console.log(assets);
         return assets;
       })
     );
@@ -66,6 +67,7 @@ export class DataService {
     return this.httpClient.get<ICollection>(this.baseUrl + collectionUrl)
       .pipe(
         map(collection => {
+          console.log(collection);
           return collection;
         })
       );

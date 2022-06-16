@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
@@ -15,6 +15,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
   public next: string = '';
   public previous: string = '';
   public gettingData: boolean = true;
+
+  @Input() collectionSlug: string = '';
 
   private getAssetsSubscription: Subscription | undefined;
 
@@ -33,7 +35,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
 
   private getAssets(): void {
     this.getAssetsSubscription = this.dataService
-      .getAssets(this.next)
+      .getAssets(this.next, this.collectionSlug)
       .subscribe((assets: IAssets) => {
         this.next = assets.next;
         this.previous = assets.previous;

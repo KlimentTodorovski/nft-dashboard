@@ -1,19 +1,19 @@
-<mat-spinner *ngIf="gettingData"></mat-spinner>
+<loading-spinner *ngIf="gettingData"></loading-spinner>
 <div class="container">
-  <div class="row" *ngIf="assets">
-    <div class="col" class="col-xl-2" *ngFor="let asset of assets.assets">
-      <mat-card class="card position-relative" *ngIf="asset.image_url">
-        <mat-card-title class="small">{{asset.name}}</mat-card-title>
-        <mat-card-content class="pull-left">
-          <img src={{asset.image_url}} class="img-thumbnail">
-        </mat-card-content>
-      </mat-card>
-      <br />
-    </div>
-  </div>
-  <div class="row" *ngIf="assets && assets.assets.length === 0">
-    <div class="coll">
-      No assets
+  <div class="row">
+    <div class="col">
+<!--
+  banner_image_url - slikata so e kako naslovna
+  created_date
+  description
+  editors
+  image_url -slikata za profilna
+  name
+  payout_address
+  stats - moze da imame komponenta i da povikuva endpoint
+  traits - moze top 20 ili top 10 da prikazuvam
+-->
     </div>
   </div>
 </div>
+<app-assets [collectionSlug]="slug"></app-assets>

@@ -15,88 +15,13 @@
       </ng-template>
     </div>
     <div class="col">
-      <div class="card">
-        <div class="card-header">
-          {{asset.name}}
-        </div>
-        <div class="card-body">
-          <div class="container">
-            <div class="row">
-              <div class="col-4">
-                Owned by
-              </div>
-              <div class="col" *ngIf="asset.owner.user && asset.owner.user.username !== 'NullAddress'; else elseBlock">
-                {{asset.owner.user.username}}
-              </div>
-              <ng-template #elseBlock>
-                <div class="col">
-                  No owner
-                </div>
-              </ng-template>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                Contract Address
-              </div>
-              <div class="col">
-                <a [href]="etherscan">{{ (assetContractAddress.length > 30) ? (assetContractAddress | slice:0:30) + '...' : (assetContractAddress) }}</a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                Token ID
-              </div>
-              <div class="col">
-                {{ (tokenId.length > 30) ? (tokenId | slice:0:30) + '...' : (tokenId) }}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                Created date
-              </div>
-              <div class="col">
-                {{ asset.asset_contract.created_date }}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                Creator
-              </div>
-              <div class="col" *ngIf="asset.creator.user && asset.creator.user.username">
-                {{ asset.creator.user.username }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <button class="btn btn-info" (click)="openCollection()">Open Collection</button>
+      <asset-details [name]="asset.name" [owner]="asset.owner.user.username"
+        [contractAddress]="assetContractAddress" [tokenId]="tokenId"
+        [etherscan]="etherscan" [creator]="asset.creator.user.username"
+        [createdDate]="asset.asset_contract.created_date"></asset-details>
       <br>
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            Traits
-          </div>
-          <div class="card-body">
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <div class="container">
-                    <div class="row" *ngFor="let trait of asset.traits">
-                      {{trait.trait_type}}
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="container">
-                    <div class="row" *ngFor="let trait of asset.traits">
-                     {{trait.value}}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <asset-traits [traits]="asset.traits"></asset-traits>
     </div>
   </div>
 </div>
