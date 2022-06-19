@@ -91,3 +91,13 @@ export interface Traits {
   head:       { [key: string]: number };
   piercing:   { [key: string]: number };
 }
+
+export interface CollectionDetails {
+  image_url: string;
+  banner_image_url: string;
+  created_date: string;
+  description: string;
+  short_description: null | string;
+  name: string;
+  payout_address: string;
+}

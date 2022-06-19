@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { IAssets } from 'src/shared/models/assets.interface';
-import { ICollection } from 'src/shared/models/collection.interface';
+import { CollectionDetails, ICollection } from 'src/shared/models/collection.interface';
 
 @Component({
   selector: 'app-collection',
@@ -22,6 +22,16 @@ export class CollectionComponent implements OnInit, OnDestroy {
   private getAssetsSubscription: Subscription | undefined;
   private next: string = '';
   private previous: string = '';
+
+  public collectionDetails: CollectionDetails = {
+    image_url: '',
+    banner_image_url: '',
+    created_date: '',
+    description: '',
+    name: '',
+    payout_address: '',
+    short_description: ''
+  }
 
   constructor(
     private router: Router,
@@ -67,8 +77,20 @@ export class CollectionComponent implements OnInit, OnDestroy {
         .getCollection(this.slug)
         .subscribe((collection: ICollection) => {
           this.collection = collection;
+
+          this.mapToCollectionDetails(collection);
         }
       );
     }
+  }
+
+  mapToCollectionDetails(collection: ICollection): void {
+    this.collectionDetails.image_url = collection.collection.image_url;
+    this.collectionDetails.banner_image_url = collection.collection.banner_image_url;
+    this.collectionDetails.created_date = collection.collection.created_date;
+    this.collectionDetails.description = collection.collection.description;
+    this.collectionDetails.name = collection.collection.name;
+    this.collectionDetails.payout_address = collection.collection.payout_address;
+    this.collectionDetails.short_description = collection.collection.short_description;
   }
 }

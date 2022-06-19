@@ -15,6 +15,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { TraitsComponent } from './shared/asset-traits/traits.component';
 import { AssetDetailsComponent } from './shared/asset-details/asset-details.component';
+import { CollectionDetailsComponent } from './collection/details/collection-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AssetDetailsComponent } from './shared/asset-details/asset-details.comp
     AssetsComponent,
     LoadingSpinnerComponent,
     TraitsComponent,
-    AssetDetailsComponent
+    AssetDetailsComponent,
+    CollectionDetailsComponent
   ],
   imports: [
     CommonModule,
