@@ -127,3 +127,13 @@ export interface Trait {
   trait_count:  number;
   order:        null | string;
 }
+
+export interface AssetDetails {
+  name: string;
+  owner: string;
+  contractAddress: string;
+  tokenId: string;
+  etherscan: string;
+  creator: string;
+  createdDate: string;
+}

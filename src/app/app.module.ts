@@ -13,8 +13,8 @@ import { CommonModule } from '@angular/common';
 import { AssetsComponent } from './assets/assets.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { TraitsComponent } from './shared/asset-traits/traits.component';
-import { AssetDetailsComponent } from './shared/asset-details/asset-details.component';
+import { TraitsComponent } from './asset/asset-traits/traits.component';
+import { AssetDetailsComponent } from './asset/asset-details/asset-details.component';
 import { CollectionDetailsComponent } from './collection/details/collection-details.component';
 
 @NgModule({

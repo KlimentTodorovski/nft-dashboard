@@ -1,9 +1,9 @@
 <div class="card">
-  <div class="card-header">
+  <div class="card-header text-white">
     Traits
   </div>
   <div class="card-body">
-    <div class="container">
+    <div class="container" *ngIf="traits.length > 0; else elseBlock">
       <div class="row">
         <div class="col">
           <div class="container">
@@ -21,5 +21,10 @@
         </div>
       </div>
     </div>
+    <ng-template #elseBlock>
+      <div class="">
+        No traits
+      </div>
+    </ng-template>
   </div>
 </div>

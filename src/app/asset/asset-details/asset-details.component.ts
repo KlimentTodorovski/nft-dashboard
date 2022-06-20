@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AssetDetails } from 'src/shared/models/asset.interface';
 
 @Component({
   selector: 'asset-details',
@@ -7,13 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AssetDetailsComponent implements OnInit {
 
-  @Input() name: string = '';
-  @Input() owner: string = '';
-  @Input() contractAddress: string = '';
-  @Input() tokenId: string = '';
-  @Input() createdDate: string = '';
-  @Input() creator: string = '';
-  @Input() etherscan: string = '';
+  @Input() assetDetails: AssetDetails = {
+    contractAddress: '',
+    createdDate: '',
+    creator: '',
+    etherscan: '',
+    name: '',
+    owner: '',
+    tokenId: ''
+  }
 
   constructor() { }
 

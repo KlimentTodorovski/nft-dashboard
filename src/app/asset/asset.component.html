@@ -1,25 +1,27 @@
 <loading-spinner *ngIf="gettingData"></loading-spinner>
 <div class="container">
   <div class="row" *ngIf="asset">
-    <div class="col">
-      <div class="card-img-top">
-        <img [src]="asset.image_url">
+    <div class="col-5">
+      <div class="card-img-top img-fluid">
+        <img [src]="asset.image_url" class="img-card">
       </div>
       <div class="card-body" *ngIf="asset.description; else elseBlock1">
-        {{asset.description}}
+        <p class="align-both-sides">
+          {{asset.description}}
+        </p>
       </div>
       <ng-template #elseBlock1>
-        <div class="card-footer">
+        <div class="card-body">
           No description
         </div>
       </ng-template>
     </div>
     <div class="col">
-      <button class="btn btn-info" (click)="openCollection()">Open Collection</button>
-      <asset-details [name]="asset.name" [owner]="asset.owner.user.username"
-        [contractAddress]="assetContractAddress" [tokenId]="tokenId"
-        [etherscan]="etherscan" [creator]="asset.creator.user.username"
-        [createdDate]="asset.asset_contract.created_date"></asset-details>
+      <div class="d-grid gap-2">
+        <button class="btn btn-info text-white" (click)="openCollection()">Open Collection</button>
+      </div>
+      <br>
+      <asset-details [assetDetails]="assetDetails"></asset-details>
       <br>
       <asset-traits [traits]="asset.traits"></asset-traits>
     </div>
