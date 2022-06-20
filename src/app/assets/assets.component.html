@@ -1,5 +1,5 @@
 <loading-spinner *ngIf="gettingData"></loading-spinner>
-<div class="container" infinite-scroll (scrolled)="onScrollDown($event)">
+<div class="container mt-3" infinite-scroll (scrolled)="onScrollDown($event)">
   <div class="row">
     <div class="col-xl-2" *ngFor="let asset of _assets">
       <div class="card position-relative">
