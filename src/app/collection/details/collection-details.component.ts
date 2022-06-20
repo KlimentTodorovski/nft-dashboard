@@ -15,12 +15,20 @@ export class CollectionDetailsComponent implements OnInit {
     description: '',
     name: '',
     payout_address: '',
-    short_description: ''
+    short_description: '',
+    floor_price: 0,
+    items_count: 0,
+    num_owners: 0,
+    total_volume: 0,
+    eth_picture: ''
   };
+
+  public etherscan: string = 'https://etherscan.io/address/';
 
   constructor() { }
 
   ngOnInit(): void {
+    this.etherscan += this.collectionDetails.payout_address;
   }
 
 }

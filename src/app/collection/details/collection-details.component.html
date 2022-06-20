@@ -1,8 +1,59 @@
-<img [src]="collectionDetails.banner_image_url" class="img-wallpaper">
-<pre>
-  Creation Date: {{collectionDetails.created_date}}
-  Name: {{collectionDetails.name}}
-  Payout Address: {{collectionDetails.payout_address}}
-</pre>
-<p>Description: {{collectionDetails.description}}</p>
-<img [src]="collectionDetails.image_url" class="img-fluid img-profile">
+<div class="main">
+  <img [src]="collectionDetails.banner_image_url" class="img-wallpaper cover">
+  <img [src]="collectionDetails.image_url" class="img-fluid img-profile profile">
+</div>
+<h3>{{collectionDetails.name}}</h3>
+<div>
+  {{collectionDetails.description}}
+</div>
+<br>
+<div>
+  <div class="inline">
+    <span>
+      <h4 class="mb-0">{{collectionDetails.items_count}}</h4>
+    </span>
+    <span>
+      items
+    </span>
+  </div>
+  <div class="inline ms-5">
+    <span>
+      <h4 class="mb-0">{{collectionDetails.num_owners}}</h4>
+    </span>
+    <span>
+      owners
+    </span>
+  </div>
+  <div class="inline ms-5">
+    <span>
+      <div class="image-txt-container">
+        <img [src]="collectionDetails.eth_picture" style="height: 20px;">
+        <h4 class="mb-0 ps-1">{{collectionDetails.floor_price}}</h4>
+      </div>
+    </span>
+    <span>
+      floor price
+    </span>
+  </div>
+  <div class="inline ms-5">
+    <span>
+      <div class="image-txt-container">
+        <img [src]="collectionDetails.eth_picture" style="height: 20px;">
+        <h4 class="mb-0 ps-1">{{collectionDetails.total_volume}}</h4>
+      </div>
+    </span>
+    <span>
+      total volume
+    </span>
+  </div>
+  <div class="inline ms-5">
+    <span>
+      <a [href]="etherscan">
+        <h4 class="mb-0 text-dark">{{collectionDetails.payout_address}}</h4>
+      </a>
+    </span>
+    <span>
+      payout address
+    </span>
+  </div>
+</div>

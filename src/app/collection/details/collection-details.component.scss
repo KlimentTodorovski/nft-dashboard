@@ -1,8 +1,3 @@
-.card {
-  max-width: 400px;
-  max-height: 400px;
-}
-
 .img-wallpaper {
   width: 100%;
   height: 320px;
@@ -10,5 +5,38 @@
 }
 
 .img-profile {
-  width: 15%;
+  width: 150px;
+}
+
+.main {
+  display: block;
+  position: relative;
+}
+
+.cover {
+  display:block;
+  position:relative;
+  overflow:hidden;
+}
+
+.profile {
+  display: block;
+  position: relative;
+  border-radius: 5px;
+  margin: -130px 0 10px 20px;
+  z-index: 999;
+}
+
+.image-txt-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.inline {
+  float: left;
+}
+
+a {
+  text-decoration: none;
 }

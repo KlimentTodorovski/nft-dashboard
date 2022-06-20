@@ -30,7 +30,12 @@ export class CollectionComponent implements OnInit, OnDestroy {
     description: '',
     name: '',
     payout_address: '',
-    short_description: ''
+    short_description: '',
+    floor_price: 0,
+    items_count: 0,
+    num_owners: 0,
+    total_volume: 0,
+    eth_picture: ''
   }
 
   constructor(
@@ -77,7 +82,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
         .getCollection(this.slug)
         .subscribe((collection: ICollection) => {
           this.collection = collection;
-
+          console.log(collection.collection);
           this.mapToCollectionDetails(collection);
         }
       );
@@ -92,5 +97,10 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionDetails.name = collection.collection.name;
     this.collectionDetails.payout_address = collection.collection.payout_address;
     this.collectionDetails.short_description = collection.collection.short_description;
+    this.collectionDetails.floor_price = collection.collection.stats.floor_price;
+    this.collectionDetails.items_count = collection.collection.stats.count;
+    this.collectionDetails.num_owners = collection.collection.stats.num_owners;
+    this.collectionDetails.total_volume = collection.collection.stats.total_volume;
+    this.collectionDetails.eth_picture = collection.collection.payment_tokens[0].image_url;
   }
 }

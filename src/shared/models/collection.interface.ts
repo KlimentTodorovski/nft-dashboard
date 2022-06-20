@@ -1,3 +1,4 @@
+import { NumberValueAccessor } from "@angular/forms";
 import { Stat } from "./collection.stats.interface";
 
 export interface ICollection {
@@ -100,4 +101,9 @@ export interface CollectionDetails {
   short_description: null | string;
   name: string;
   payout_address: string;
+  items_count: number;
+  num_owners: number;
+  floor_price: number;
+  total_volume: number;
+  eth_picture: string;
 }
