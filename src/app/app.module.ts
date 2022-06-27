@@ -16,6 +16,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { TraitsComponent } from './asset/asset-traits/traits.component';
 import { AssetDetailsComponent } from './asset/asset-details/asset-details.component';
 import { CollectionDetailsComponent } from './collection/details/collection-details.component';
+import { StatComponent } from './collection/stats/stat.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CollectionDetailsComponent } from './collection/details/collection-deta
     LoadingSpinnerComponent,
     TraitsComponent,
     AssetDetailsComponent,
-    CollectionDetailsComponent
+    CollectionDetailsComponent,
+    StatComponent
   ],
   imports: [
     CommonModule,
