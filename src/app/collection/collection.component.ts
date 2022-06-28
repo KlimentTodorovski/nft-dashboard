@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { IAssets } from 'src/shared/models/assets.interface';
 import { CollectionDetails, ICollection } from 'src/shared/models/collection.interface';
+import { CollectionStatsVolume, CollectionStatsChange, CollectionStatsSales, CollectionStatsAveragePrice, Stat } from 'src/shared/models/collection.stats.interface';
 
 @Component({
   selector: 'app-collection',
@@ -36,6 +37,33 @@ export class CollectionComponent implements OnInit, OnDestroy {
     num_owners: 0,
     total_volume: 0,
     eth_picture: ''
+  }
+
+  public collectionStatsVolume: CollectionStatsVolume = {
+    one_day_volume: 0,
+    seven_day_volume: 0,
+    thirty_day_volume: 0,
+    total_volume: 0
+  }
+
+  public collectionStatsChange: CollectionStatsChange = {
+    one_day_change: 0,
+    seven_day_change: 0,
+    thirty_day_change: 0
+  }
+
+  public collectionStatsSales: CollectionStatsSales = {
+    one_day_sales: 0,
+    seven_day_sales: 0,
+    thirty_day_sales: 0,
+    total_sales: 0
+  }
+
+  public collectionStatsAveragePrice: CollectionStatsAveragePrice = {
+    one_day_average_price: 0,
+    seven_day_average_price: 0,
+    thirty_day_average_price: 0,
+    average_price: 0
   }
 
   constructor(
@@ -83,6 +111,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
         .subscribe((collection: ICollection) => {
           this.collection = collection;
           this.mapToCollectionDetails(collection);
+          this.mapToCollectionStats(collection.collection.stats);
         }
       );
     }
@@ -101,5 +130,39 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionDetails.num_owners = collection.collection.stats.num_owners;
     this.collectionDetails.total_volume = collection.collection.stats.total_volume;
     this.collectionDetails.eth_picture = collection.collection.payment_tokens[0].image_url;
+  }
+
+  mapToCollectionStats(stats: Stat): void {
+    this.mapToCollectionStatsVolume(stats);
+    this.mapToCollectionStatsChange(stats);
+    this.mapToCollectionStatsSales(stats);
+    this.mapToCollectionStatsAveragePrice(stats);
+  }
+
+  mapToCollectionStatsVolume(stats: Stat): void {
+    this.collectionStatsVolume.one_day_volume = stats.one_day_volume;
+    this.collectionStatsVolume.seven_day_volume = stats.seven_day_volume;
+    this.collectionStatsVolume.thirty_day_volume = stats.thirty_day_volume;
+    this.collectionStatsVolume.total_volume = stats.total_volume;
+  }
+
+  mapToCollectionStatsChange(stats: Stat) {
+    this.collectionStatsChange.one_day_change = stats.one_day_change;
+    this.collectionStatsChange.seven_day_change = stats.seven_day_change;
+    this.collectionStatsChange.thirty_day_change = stats.thirty_day_change;
+  }
+
+  mapToCollectionStatsSales(stats: Stat) {
+    this.collectionStatsSales.one_day_sales = stats.one_day_sales;
+    this.collectionStatsSales.seven_day_sales = stats.seven_day_sales;
+    this.collectionStatsSales.thirty_day_sales = stats.thirty_day_sales;
+    this.collectionStatsSales.total_sales = stats.total_sales
+  }
+
+  mapToCollectionStatsAveragePrice(stats: Stat) {
+    this.collectionStatsAveragePrice.one_day_average_price = stats.one_day_average_price;
+    this.collectionStatsAveragePrice.seven_day_average_price = stats.seven_day_average_price;
+    this.collectionStatsAveragePrice.thirty_day_average_price = stats.thirty_day_average_price;
+    this.collectionStatsAveragePrice.average_price = stats.average_price;
   }
 }

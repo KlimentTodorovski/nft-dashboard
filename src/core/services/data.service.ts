@@ -66,6 +66,7 @@ export class DataService {
     return this.httpClient.get<ICollection>(this.baseUrl + collectionUrl)
       .pipe(
         map(collection => {
+          console.log(collection);
           return collection;
         })
       );

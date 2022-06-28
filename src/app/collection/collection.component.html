@@ -10,7 +10,10 @@
           <app-assets [collectionSlug]="slug"></app-assets>
         </mat-tab>
         <mat-tab label="Char stats">
-
+          <app-stats [collectionStatsVolume]="collectionStatsVolume"
+                     [collectionStatsChange]="collectionStatsChange"
+                     [collectionStatsSales]="collectionStatsSales"
+                     [collectionStatsAveragePrice]="collectionStatsAveragePrice"></app-stats>
         </mat-tab>
         <mat-tab label="Editors">Content 3</mat-tab>
         <mat-tab label="Traits">Content 3</mat-tab>
