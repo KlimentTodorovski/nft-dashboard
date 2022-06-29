@@ -1,54 +1,84 @@
-<div class="card">
-  <div class="card-header text-white">
-    {{this.assetDetails.name}}
-  </div>
-  <div class="card-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-          Owned by
-        </div>
-        <div class="col" *ngIf="this.assetDetails.owner !== 'NullAddress'; else elseBlock">
-          {{this.assetDetails.owner}}
-        </div>
-        <ng-template #elseBlock>
-          <div class="col">
-            No owner
-          </div>
-        </ng-template>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          Contract Address
-        </div>
-        <div class="col">
-          <a [href]="this.assetDetails.etherscan">{{ this.assetDetails.contractAddress }}</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          Token ID
-        </div>
-        <div class="col">
-          {{ (this.assetDetails.tokenId.length > 30) ? (this.assetDetails.tokenId | slice:0:30) + '...' : (this.assetDetails.tokenId) }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          Created date
-        </div>
-        <div class="col">
-          {{ this.assetDetails.createdDate }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          Creator
-        </div>
-        <div class="col">
-          {{ this.assetDetails.creator }}
-        </div>
-      </div>
+<mat-list role="list">
+  <div class="row">
+    <div class="col-4">
+      <mat-list-item role="listitem">Name</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem" *ngIf="this.assetDetails.name; else elseBlock">
+        {{this.assetDetails.name}}
+      </mat-list-item>
+      <ng-template #elseBlock>
+        <mat-list-item>N/A</mat-list-item>
+      </ng-template>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-4">
+      <mat-list-item role="listitem">Owned by</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem" *ngIf="this.assetDetails.owner">
+        <a [href]="this.ownerEtherscan">
+          {{this.assetDetails.owner}}
+        </a>
+      </mat-list-item>
+      <mat-list-item role="listitem" *ngIf="!this.assetDetails.owner && this.assetDetails.ownerAddress">
+        <a [href]="this.ownerEtherscan">
+          {{this.assetDetails.ownerAddress}}
+        </a>
+      </mat-list-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-list-item role="listitem">Contract Address</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem">
+        <a [href]="this.assetDetails.etherscan">
+          {{ this.assetDetails.contractAddress }}
+        </a>
+      </mat-list-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-list-item role="listitem">Token ID</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem">
+        {{ (this.assetDetails.tokenId.length > 30) ? (this.assetDetails.tokenId | slice:0:30) + '...' : (this.assetDetails.tokenId) }}
+      </mat-list-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-list-item role="listitem">Created date</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem">
+        {{ this.assetDetails.createdDate }}
+      </mat-list-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-list-item role="listitem">Creator</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem">
+        {{ this.assetDetails.creator }}
+      </mat-list-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-list-item role="listitem">Description</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem">
+        {{ this.assetDetails.description }}
+      </mat-list-item>
+    </div>
+  </div>
+</mat-list>

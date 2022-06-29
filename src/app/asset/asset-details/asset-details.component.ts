@@ -15,12 +15,20 @@ export class AssetDetailsComponent implements OnInit {
     etherscan: '',
     name: '',
     owner: '',
-    tokenId: ''
+    tokenId: '',
+    description: '',
+    ownerAddress: ''
   }
+
+  public ownerEtherscan: string = 'https://etherscan.io/address/';
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.assetDetails.name);
+    if (this.assetDetails.ownerAddress) {
+      this.ownerEtherscan += this.assetDetails.ownerAddress;
+    }
   }
 
 }

@@ -112,12 +112,14 @@ export class CollectionComponent implements OnInit, OnDestroy {
           this.collection = collection;
           this.mapToCollectionDetails(collection);
           this.mapToCollectionStats(collection.collection.stats);
+          console.log('traits: ');
+          console.log(this.collection.collection.traits);
         }
       );
     }
   }
 
-  mapToCollectionDetails(collection: ICollection): void {
+  private mapToCollectionDetails(collection: ICollection): void {
     this.collectionDetails.image_url = collection.collection.image_url;
     this.collectionDetails.banner_image_url = collection.collection.banner_image_url;
     this.collectionDetails.created_date = collection.collection.created_date;
@@ -132,34 +134,34 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionDetails.eth_picture = collection.collection.payment_tokens[0].image_url;
   }
 
-  mapToCollectionStats(stats: Stat): void {
+  private mapToCollectionStats(stats: Stat): void {
     this.mapToCollectionStatsVolume(stats);
     this.mapToCollectionStatsChange(stats);
     this.mapToCollectionStatsSales(stats);
     this.mapToCollectionStatsAveragePrice(stats);
   }
 
-  mapToCollectionStatsVolume(stats: Stat): void {
+  private mapToCollectionStatsVolume(stats: Stat): void {
     this.collectionStatsVolume.one_day_volume = stats.one_day_volume;
     this.collectionStatsVolume.seven_day_volume = stats.seven_day_volume;
     this.collectionStatsVolume.thirty_day_volume = stats.thirty_day_volume;
     this.collectionStatsVolume.total_volume = stats.total_volume;
   }
 
-  mapToCollectionStatsChange(stats: Stat) {
+  private mapToCollectionStatsChange(stats: Stat) {
     this.collectionStatsChange.one_day_change = stats.one_day_change;
     this.collectionStatsChange.seven_day_change = stats.seven_day_change;
     this.collectionStatsChange.thirty_day_change = stats.thirty_day_change;
   }
 
-  mapToCollectionStatsSales(stats: Stat) {
+  private mapToCollectionStatsSales(stats: Stat) {
     this.collectionStatsSales.one_day_sales = stats.one_day_sales;
     this.collectionStatsSales.seven_day_sales = stats.seven_day_sales;
     this.collectionStatsSales.thirty_day_sales = stats.thirty_day_sales;
     this.collectionStatsSales.total_sales = stats.total_sales
   }
 
-  mapToCollectionStatsAveragePrice(stats: Stat) {
+  private mapToCollectionStatsAveragePrice(stats: Stat) {
     this.collectionStatsAveragePrice.one_day_average_price = stats.one_day_average_price;
     this.collectionStatsAveragePrice.seven_day_average_price = stats.seven_day_average_price;
     this.collectionStatsAveragePrice.thirty_day_average_price = stats.thirty_day_average_price;

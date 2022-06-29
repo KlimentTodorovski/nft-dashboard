@@ -29,6 +29,9 @@ export class CollectionDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.etherscan += this.collectionDetails.payout_address;
+
+    this.collectionDetails.total_volume = Math.round((this.collectionDetails.total_volume + Number.EPSILON) * 1000) / 1000;
+    this.collectionDetails.floor_price = Math.round((this.collectionDetails.floor_price + Number.EPSILON) * 1000) / 1000;
   }
 
 }

@@ -48,9 +48,14 @@
   </div>
   <div class="inline ms-5">
     <span>
-      <a [href]="etherscan">
+      <a [href]="etherscan" *ngIf="collectionDetails.payout_address; else elseBlock">
         <h4 class="mb-0 text-dark">{{collectionDetails.payout_address}}</h4>
       </a>
+      <ng-template #elseBlock>
+        <div>
+          <h4 class="mb-0">N/A</h4>
+        </div>
+      </ng-template>
     </span>
     <span>
       payout address

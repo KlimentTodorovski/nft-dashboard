@@ -5,25 +5,20 @@
       <div class="card-img-top img-fluid">
         <img [src]="asset.image_url" class="img-card">
       </div>
-      <div class="card-body" *ngIf="asset.description; else elseBlock1">
-        <p class="align-both-sides">
-          {{asset.description}}
-        </p>
-      </div>
-      <ng-template #elseBlock1>
-        <div class="card-body">
-          No description
-        </div>
-      </ng-template>
     </div>
     <div class="col">
       <div class="d-grid gap-2">
         <button class="btn btn-info text-white" (click)="openCollection()">Open Collection</button>
       </div>
       <br>
-      <asset-details [assetDetails]="assetDetails"></asset-details>
-      <br>
-      <asset-traits [traits]="asset.traits"></asset-traits>
+      <mat-tab-group mat-align-tabs="start" dynamicHeight>
+        <mat-tab label="Details">
+          <asset-details [assetDetails]="assetDetails"></asset-details>
+        </mat-tab>
+        <mat-tab label="Traits">
+          <asset-traits [traits]="asset.traits"></asset-traits>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>

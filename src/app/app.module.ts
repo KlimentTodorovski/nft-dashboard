@@ -17,6 +17,7 @@ import { TraitsComponent } from './asset/asset-traits/traits.component';
 import { AssetDetailsComponent } from './asset/asset-details/asset-details.component';
 import { CollectionDetailsComponent } from './collection/details/collection-details.component';
 import { StatsComponent } from './collection/stats/stats.component';
+import { EditorsComponent } from './collection/editors/editors.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StatsComponent } from './collection/stats/stats.component';
     TraitsComponent,
     AssetDetailsComponent,
     CollectionDetailsComponent,
-    StatsComponent
+    StatsComponent,
+    EditorsComponent
   ],
   imports: [
     CommonModule,

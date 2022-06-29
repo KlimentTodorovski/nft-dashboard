@@ -136,4 +136,6 @@ export interface AssetDetails {
   etherscan: string;
   creator: string;
   createdDate: string;
+  description: string;
+  ownerAddress: string;
 }

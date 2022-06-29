@@ -2,11 +2,11 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
-import { ICollections } from 'src/shared/collections.interface';
 import { MatTableDataSource } from '@angular/material/table'
-import { Collection } from 'src/shared/collection.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Collection } from 'src/shared/models/collection.interface';
+import { ICollections } from 'src/shared/models/collections.interface';
 
 @Component({
   selector: 'app-collections',

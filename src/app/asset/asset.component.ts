@@ -26,7 +26,9 @@ export class AssetComponent implements OnInit, OnDestroy {
     etherscan: '',
     name: '',
     owner: '',
-    tokenId: ''
+    tokenId: '',
+    description: '',
+    ownerAddress: ''
   }
 
   constructor(
@@ -56,6 +58,7 @@ export class AssetComponent implements OnInit, OnDestroy {
       .subscribe((asset: IAsset) => {
         this.asset = asset;
         this.mapToAssetDetails(asset);
+        console.log(asset);
         this.gettingData = false;
       }
     );
@@ -73,7 +76,9 @@ export class AssetComponent implements OnInit, OnDestroy {
     this.assetDetails.creator = asset.creator.user.username;
     this.assetDetails.etherscan = this.etherscan;
     this.assetDetails.name = asset.name;
-    this.assetDetails.owner = asset.owner.user.username;
+    this.assetDetails.owner = asset.top_ownerships[0].owner.user.username;
+    this.assetDetails.ownerAddress = asset.top_ownerships[0].owner.address;
     this.assetDetails.tokenId = this.tokenId;
+    this.assetDetails.description = asset.description ?? '';
   }
 }
