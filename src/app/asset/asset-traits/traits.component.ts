@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Trait } from 'src/shared/models/asset.interface';
+import { faFolderBlank } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'asset-traits',
@@ -23,6 +24,8 @@ export class TraitsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
   dataSource: MatTableDataSource<Trait> = new MatTableDataSource();
+
+  public faIcon = faFolderBlank;
 
   constructor() { }
 
