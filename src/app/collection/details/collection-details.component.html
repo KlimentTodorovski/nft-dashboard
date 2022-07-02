@@ -4,7 +4,7 @@
 </div>
 <h3>{{collectionDetails.name}}</h3>
 <div>
-  {{collectionDetails.description}}
+  <app-expand-text [description]="collectionDetails.description" [truncateSize]="130"></app-expand-text>
 </div>
 <br>
 <div>

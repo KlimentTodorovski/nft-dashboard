@@ -112,8 +112,6 @@ export class CollectionComponent implements OnInit, OnDestroy {
           this.collection = collection;
           this.mapToCollectionDetails(collection);
           this.mapToCollectionStats(collection.collection.stats);
-          console.log('traits: ');
-          console.log(this.collection.collection.traits);
         }
       );
     }

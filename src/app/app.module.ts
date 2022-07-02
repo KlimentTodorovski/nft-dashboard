@@ -18,6 +18,8 @@ import { AssetDetailsComponent } from './asset/asset-details/asset-details.compo
 import { CollectionDetailsComponent } from './collection/details/collection-details.component';
 import { StatsComponent } from './collection/stats/stats.component';
 import { EditorsComponent } from './collection/editors/editors.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ExpandTextComponent } from './shared/expand-text/expand-text.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { EditorsComponent } from './collection/editors/editors.component';
     AssetDetailsComponent,
     CollectionDetailsComponent,
     StatsComponent,
-    EditorsComponent
+    EditorsComponent,
+    ExpandTextComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,8 @@ import { EditorsComponent } from './collection/editors/editors.component';
     BrowserAnimationsModule,
     CoreModule,
     MaterialExampleModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

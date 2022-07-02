@@ -72,13 +72,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
-      <mat-list-item role="listitem">Description</mat-list-item>
-    </div>
-    <div class="col">
-      <mat-list-item role="listitem">
-        {{ this.assetDetails.description }}
-      </mat-list-item>
+    <div class="col ms-3">
+      <app-expand-text [description]="this.assetDetails.description" [truncateSize]="70"></app-expand-text>
     </div>
   </div>
 </mat-list>

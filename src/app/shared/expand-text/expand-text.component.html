@@ -1,0 +1,8 @@
+<p class="d-inline">{{ _description }}</p>
+<span class="ps-2"
+      style="vertical-align: middle; font-size: 12px; cursor: pointer;"
+      *ngIf="description.length > truncateSize"
+      (click)="expandDescription()">
+  {{ show }}
+  <fa-icon [icon]="faIcon"></fa-icon>
+</span>

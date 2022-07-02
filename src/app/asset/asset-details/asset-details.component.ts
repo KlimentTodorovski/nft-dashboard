@@ -25,10 +25,8 @@ export class AssetDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.assetDetails.name);
     if (this.assetDetails.ownerAddress) {
       this.ownerEtherscan += this.assetDetails.ownerAddress;
     }
   }
-
 }
