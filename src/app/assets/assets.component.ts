@@ -42,6 +42,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
         this._assets = this._assets.concat(assets.assets.filter(x => x.image_url !== null));
 
         this.gettingData = false;
+        console.log('Assets length:')
+        console.log(this._assets.length);
       }
     );
   }
@@ -53,6 +55,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
   }
 
   public onScrollDown(event: any) {
+    this.getAssetsSubscription?.unsubscribe();
+
     this.getAssets();
   }
 }

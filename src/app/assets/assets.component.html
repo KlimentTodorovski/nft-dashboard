@@ -4,10 +4,10 @@
     <div class="col-xl-2" *ngFor="let asset of _assets">
       <div class="card position-relative">
         <div class="card-header small"
-             [matTooltip]="asset.name"
-             [matTooltipDisabled]="asset.name.length <= 15"
+             [matTooltip]="asset.name ? asset.name : ''"
+             [matTooltipDisabled]="asset.name ? asset.name.length <= 15 : true"
              [matTooltipPosition]="'above'">
-          {{ (asset.name.length > 15) ? (asset.name | slice:0:15)+'...' :(asset.name) }}
+          {{ (asset.name ? asset.name.length > 15 : false) ? (asset.name | slice:0:15)+'...' :(asset.name ?? 'N/A') }}
         </div>
         <div class="card-img-top pull-left">
           <img src={{asset.image_preview_url}} class="img-thumbnail" (click)="openDetails(asset)">

@@ -10,7 +10,7 @@ export interface IAsset {
   image_original_url:         string;
   animation_url:              null | string;
   animation_original_url:     null | string;
-  name:                       string;
+  name:                       null | string;
   description:                null | string;
   external_link:              string;
   asset_contract:             AssetContract;

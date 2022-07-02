@@ -75,7 +75,7 @@ export class AssetComponent implements OnInit, OnDestroy {
     this.assetDetails.createdDate = asset.asset_contract.created_date;
     this.assetDetails.creator = asset.creator.user.username;
     this.assetDetails.etherscan = this.etherscan;
-    this.assetDetails.name = asset.name;
+    this.assetDetails.name = asset.name ?? 'N/A';
     this.assetDetails.owner = asset.top_ownerships[0].owner.user.username;
     this.assetDetails.ownerAddress = asset.top_ownerships[0].owner.address;
     this.assetDetails.tokenId = this.tokenId;
