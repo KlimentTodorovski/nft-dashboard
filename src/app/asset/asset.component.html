@@ -3,7 +3,11 @@
   <div class="row" *ngIf="asset">
     <div class="col-5">
       <div class="card-img-top img-fluid">
-        <img [src]="asset.image_url" class="img-card">
+        <img [src]="asset.image_url"
+             class="img-card"
+             style="cursor: pointer; margin: auto; display: block;"
+             mat-raised-button
+             (click)="openDialog()">
       </div>
     </div>
     <div class="col">

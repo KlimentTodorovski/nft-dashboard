@@ -20,6 +20,7 @@ import { StatsComponent } from './collection/stats/stats.component';
 import { EditorsComponent } from './collection/editors/editors.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpandTextComponent } from './shared/expand-text/expand-text.component';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ExpandTextComponent } from './shared/expand-text/expand-text.component'
     CollectionDetailsComponent,
     StatsComponent,
     EditorsComponent,
-    ExpandTextComponent
+    ExpandTextComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,

@@ -41,3 +41,13 @@
 a {
   text-decoration: none;
 }
+
+.no-padding-dialog .mat-dialog-container {
+  padding: 0;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  opacity: 2;
+}

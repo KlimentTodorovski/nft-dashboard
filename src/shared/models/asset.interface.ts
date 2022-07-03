@@ -42,7 +42,7 @@ export interface IAsset {
 export interface AssetContract {
   address:                         string;
   asset_contract_type:             string;
-  created_date:                    string;
+  created_date:                    Date;
   name:                            string;
   nft_version:                     string;
   opensea_version:                 null | string;
@@ -135,7 +135,7 @@ export interface AssetDetails {
   tokenId: string;
   etherscan: string;
   creator: string;
-  createdDate: string;
+  createdDate: Date;
   description: string;
   ownerAddress: string;
 }

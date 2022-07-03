@@ -1,13 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { AssetDetails, IAsset } from 'src/shared/models/asset.interface';
+import { DialogComponent } from '../shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-asset',
   templateUrl: './asset.component.html',
-  styleUrls: ['./asset.component.scss']
+  styleUrls: ['./asset.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AssetComponent implements OnInit, OnDestroy {
 
@@ -21,7 +24,7 @@ export class AssetComponent implements OnInit, OnDestroy {
 
   public assetDetails: AssetDetails = {
     contractAddress: '',
-    createdDate: '',
+    createdDate: new Date(),
     creator: '',
     etherscan: '',
     name: '',
@@ -34,7 +37,8 @@ export class AssetComponent implements OnInit, OnDestroy {
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnDestroy(): void {
@@ -79,5 +83,14 @@ export class AssetComponent implements OnInit, OnDestroy {
     this.assetDetails.ownerAddress = asset.top_ownerships[0].owner.address;
     this.assetDetails.tokenId = this.tokenId;
     this.assetDetails.description = asset.description ?? '';
+  }
+
+  public openDialog(): void {
+    this.dialog.open(DialogComponent, {
+      panelClass: 'no-padding-dialog',
+      data: {
+        imageUrl: this.asset?.image_url
+      }
+    });
   }
 }

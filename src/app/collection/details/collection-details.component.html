@@ -1,6 +1,10 @@
 <div class="main">
   <img [src]="collectionDetails.banner_image_url" class="img-wallpaper cover">
-  <img [src]="collectionDetails.image_url" class="img-fluid img-profile profile">
+  <img [src]="collectionDetails.image_url"
+       class="img-fluid img-profile profile"
+       style="cursor: pointer;"
+       mat-raised-button
+       (click)="openDialog()">
 </div>
 <h3>{{collectionDetails.name}}</h3>
 <div>

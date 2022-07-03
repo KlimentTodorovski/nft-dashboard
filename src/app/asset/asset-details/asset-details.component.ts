@@ -10,7 +10,7 @@ export class AssetDetailsComponent implements OnInit {
 
   @Input() assetDetails: AssetDetails = {
     contractAddress: '',
-    createdDate: '',
+    createdDate: new Date(),
     creator: '',
     etherscan: '',
     name: '',

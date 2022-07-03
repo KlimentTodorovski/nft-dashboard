@@ -6,3 +6,12 @@ a {
   text-align: justify;
   text-justify: inter-word;
 }
+
+.no-padding-dialog .mat-dialog-container {
+  padding: 0;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+}

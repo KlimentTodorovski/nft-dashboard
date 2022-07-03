@@ -1,10 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { CollectionDetails } from 'src/shared/models/collection.interface';
 
 @Component({
   selector: 'app-collection-details',
   templateUrl: './collection-details.component.html',
-  styleUrls: ['./collection-details.component.scss']
+  styleUrls: ['./collection-details.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CollectionDetailsComponent implements OnInit {
 
@@ -25,7 +28,7 @@ export class CollectionDetailsComponent implements OnInit {
 
   public etherscan: string = 'https://etherscan.io/address/';
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.etherscan += this.collectionDetails.payout_address;
@@ -34,4 +37,12 @@ export class CollectionDetailsComponent implements OnInit {
     this.collectionDetails.floor_price = Math.round((this.collectionDetails.floor_price + Number.EPSILON) * 1000) / 1000;
   }
 
+  openDialog(): void {
+    this.dialog.open(DialogComponent, {
+      panelClass: 'no-padding-dialog',
+      data: {
+        imageUrl: this.collectionDetails.image_url
+      }
+    });
+  }
 }
