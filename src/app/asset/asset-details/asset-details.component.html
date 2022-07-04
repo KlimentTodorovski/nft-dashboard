@@ -1,6 +1,6 @@
 <mat-list role="list">
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <mat-list-item role="listitem">Name</mat-list-item>
     </div>
     <div class="col">
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <mat-list-item role="listitem">Owned by</mat-list-item>
     </div>
     <div class="col">
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <mat-list-item role="listitem">Contract Address</mat-list-item>
     </div>
     <div class="col">
@@ -42,17 +42,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <mat-list-item role="listitem">Token ID</mat-list-item>
     </div>
     <div class="col">
       <mat-list-item role="listitem">
-        {{ (this.assetDetails.tokenId.length > 30) ? (this.assetDetails.tokenId | slice:0:30) + '...' : (this.assetDetails.tokenId) }}
+        {{ (this.assetDetails.tokenId.length > 40) ? (this.assetDetails.tokenId | slice:0:40) + '...' : (this.assetDetails.tokenId) }}
       </mat-list-item>
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <mat-list-item role="listitem">Created date</mat-list-item>
     </div>
     <div class="col">
@@ -62,7 +62,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <mat-list-item role="listitem">Creator</mat-list-item>
     </div>
     <div class="col">
@@ -71,6 +71,7 @@
       </mat-list-item>
     </div>
   </div>
+  <hr style="margin-top: 0; margin-bottom: 10px;" />
   <div class="row">
     <div class="col ms-3">
       <app-expand-text [description]="this.assetDetails.description" [truncateSize]="70"></app-expand-text>
