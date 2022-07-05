@@ -66,8 +66,15 @@
       <mat-list-item role="listitem">Creator</mat-list-item>
     </div>
     <div class="col">
-      <mat-list-item role="listitem">
-        {{ this.assetDetails.creator }}
+      <mat-list-item role="listitem" *ngIf="this.assetDetails.creator">
+        <a [href]="this.creatorEtherscan">
+          {{ this.assetDetails.creator }}
+        </a>
+      </mat-list-item>
+      <mat-list-item role="listitem" *ngIf="!this.assetDetails.creator && this.assetDetails.creatorAddress">
+        <a [href]="this.creatorEtherscan">
+          {{this.assetDetails.creatorAddress}}
+        </a>
       </mat-list-item>
     </div>
   </div>

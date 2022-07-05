@@ -135,6 +135,7 @@ export interface AssetDetails {
   tokenId: string;
   etherscan: string;
   creator: string;
+  creatorAddress: string;
   createdDate: Date;
   description: string;
   ownerAddress: string;

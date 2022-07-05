@@ -26,6 +26,7 @@ export class AssetComponent implements OnInit, OnDestroy {
     contractAddress: '',
     createdDate: new Date(),
     creator: '',
+    creatorAddress: '',
     etherscan: '',
     name: '',
     owner: '',
@@ -83,6 +84,7 @@ export class AssetComponent implements OnInit, OnDestroy {
     this.assetDetails.ownerAddress = asset.top_ownerships[0].owner.address;
     this.assetDetails.tokenId = this.tokenId;
     this.assetDetails.description = asset.description ?? '';
+    this.assetDetails.creatorAddress = asset.creator.address ?? '';
   }
 
   public openDialog(): void {

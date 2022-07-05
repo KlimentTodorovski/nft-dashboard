@@ -17,16 +17,19 @@ export class AssetDetailsComponent implements OnInit {
     owner: '',
     tokenId: '',
     description: '',
-    ownerAddress: ''
+    ownerAddress: '',
+    creatorAddress: ''
   }
 
   public ownerEtherscan: string = 'https://etherscan.io/address/';
+  public creatorEtherscan: string = 'https://etherscan.io/address/'
 
   constructor() { }
 
   ngOnInit(): void {
     if (this.assetDetails.ownerAddress) {
       this.ownerEtherscan += this.assetDetails.ownerAddress;
+      this.creatorEtherscan += this.assetDetails.creatorAddress;
     }
   }
 }
