@@ -1,1 +1,4 @@
-<img [src]="data.imageUrl" class="img">
+<img *ngIf="data.imageUrl; else noImage" [src]="data.imageUrl" class="img">
+<ng-template #noImage>
+  <img src="../../../assets/No_image_available.svg" class="img">
+</ng-template>

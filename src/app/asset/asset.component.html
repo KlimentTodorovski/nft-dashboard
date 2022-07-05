@@ -3,11 +3,19 @@
   <div class="row" *ngIf="asset">
     <div class="col-5">
       <div class="card-img-top img-fluid">
-        <img [src]="asset.image_url"
-             class="img-card"
-             style="cursor: pointer; margin: auto; display: block;"
-             mat-raised-button
-             (click)="openDialog()">
+        <img *ngIf="asset.image_url; else noImage"
+          [src]="asset.image_url"
+          class="img-card"
+          style="cursor: pointer; margin: auto; display: block;"
+          mat-raised-button
+          (click)="openDialog()">
+        <ng-template #noImage>
+          <img src="../../assets/No_image_available.png"
+            class="img-card"
+            style="cursor: pointer; margin: auto; display: block;"
+            mat-raised-button
+            (click)="openDialog()">
+        </ng-template>
       </div>
     </div>
     <div class="col">
