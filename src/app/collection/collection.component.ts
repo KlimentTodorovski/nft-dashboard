@@ -70,7 +70,9 @@ export class CollectionComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService
-  ) { }
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnDestroy(): void {
     this.getCollectionSubscription?.unsubscribe();
@@ -108,11 +110,15 @@ export class CollectionComponent implements OnInit, OnDestroy {
     if (this.slug) {
       this.getCollectionSubscription = this.dataService
         .getCollection(this.slug)
-        .subscribe((collection: ICollection) => {
-          this.collection = collection;
-          this.mapToCollectionDetails(collection);
-          this.mapToCollectionStats(collection.collection.stats);
-        }
+        .subscribe({
+          next: (collection: ICollection) => {
+            this.collection = collection;
+            this.mapToCollectionDetails(collection);
+            this.mapToCollectionStats(collection.collection.stats);
+          },
+          error: () => {
+            this.navigateToErrorPage();
+          }}
       );
     }
   }
@@ -164,5 +170,15 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionStatsAveragePrice.seven_day_average_price = stats.seven_day_average_price;
     this.collectionStatsAveragePrice.thirty_day_average_price = stats.thirty_day_average_price;
     this.collectionStatsAveragePrice.average_price = stats.average_price;
+  }
+
+  private navigateToErrorPage(): void {
+    this.router.navigate(['/error'],
+      {
+        queryParams: {
+          collectionSlug: this.slug
+        }
+      }
+    );
   }
 }

@@ -21,6 +21,8 @@ import { EditorsComponent } from './collection/editors/editors.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpandTextComponent } from './shared/expand-text/expand-text.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
+import { FormsModule } from '@angular/forms';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     StatsComponent,
     EditorsComponent,
     ExpandTextComponent,
-    DialogComponent
+    DialogComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,8 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     CoreModule,
     MaterialExampleModule,
     InfiniteScrollModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

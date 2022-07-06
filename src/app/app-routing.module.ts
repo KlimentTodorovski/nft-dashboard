@@ -3,12 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AssetComponent } from './asset/asset.component';
 import { AssetsComponent } from './assets/assets.component';
 import { CollectionComponent } from './collection/collection.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: '/assets'
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
   },
   {
     path: 'assets',
@@ -25,7 +30,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/collections'
+    redirectTo: '/assets'
   }
 ];
 

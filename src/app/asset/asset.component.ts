@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Subscription, switchMap } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { AssetDetails, IAsset } from 'src/shared/models/asset.interface';
 import { DialogComponent } from '../shared/dialog/dialog.component';
@@ -21,6 +21,7 @@ export class AssetComponent implements OnInit, OnDestroy {
   public etherscan: string = 'https://etherscan.io/address/';
 
   private getAssetSubscription: Subscription | undefined;
+  private getRouteParamsSubscription: Subscription | undefined;
 
   public assetDetails: AssetDetails = {
     contractAddress: '',
@@ -40,31 +41,39 @@ export class AssetComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog
-  ) { }
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnDestroy(): void {
     this.getAssetSubscription?.unsubscribe();
+    this.getRouteParamsSubscription?.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.getRouteParamsSubscription = this.route.paramMap.
+      subscribe(params => {
       this.assetContractAddress = params.get('assetContractAddress')!;
       this.etherscan += this.assetContractAddress;
 
       this.tokenId = params.get('tokenId')!;
-    })
 
-    this.getAsset();
+      this.getAsset();
+    });
   }
 
   private getAsset(): void {
     this.getAssetSubscription = this.dataService
       .getAsset(this.assetContractAddress, this.tokenId)
-      .subscribe((asset: IAsset) => {
-        this.asset = asset;
-        this.mapToAssetDetails(asset);
-        this.gettingData = false;
-      }
+      .subscribe({
+        next: (asset: IAsset) => {
+          this.asset = asset;
+          this.mapToAssetDetails(asset);
+          this.gettingData = false;
+        },
+        error: () => {
+          this.navigateToErrorPage();
+        }}
     );
   }
 
@@ -94,5 +103,16 @@ export class AssetComponent implements OnInit, OnDestroy {
         imageUrl: this.asset?.image_url
       }
     });
+  }
+
+  private navigateToErrorPage(): void {
+    this.router.navigate(['/error'],
+      {
+        queryParams: {
+          contractAddress: this.assetContractAddress,
+          tokenId: this.tokenId
+        }
+      }
+    );
   }
 }
