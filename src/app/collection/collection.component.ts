@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { IAssets } from 'src/shared/models/assets.interface';
 import { CollectionDetails, ICollection } from 'src/shared/models/collection.interface';
-import { CollectionStatsVolume, CollectionStatsChange, CollectionStatsSales, CollectionStatsAveragePrice, Stat } from 'src/shared/models/collection.stats.interface';
+import { CollectionStatsVolume, CollectionStatsSales, CollectionStatsAveragePrice, Stat } from 'src/shared/models/collection.stats.interface';
 
 @Component({
   selector: 'app-collection',
@@ -22,7 +22,6 @@ export class CollectionComponent implements OnInit, OnDestroy {
   private getCollectionSubscription: Subscription | undefined;
   private getAssetsSubscription: Subscription | undefined;
   private next: string = '';
-  private previous: string = '';
 
   public collectionDetails: CollectionDetails = {
     image_url: '',
@@ -44,12 +43,6 @@ export class CollectionComponent implements OnInit, OnDestroy {
     seven_day_volume: 0,
     thirty_day_volume: 0,
     total_volume: 0
-  }
-
-  public collectionStatsChange: CollectionStatsChange = {
-    one_day_change: 0,
-    seven_day_change: 0,
-    thirty_day_change: 0
   }
 
   public collectionStatsSales: CollectionStatsSales = {
@@ -140,7 +133,6 @@ export class CollectionComponent implements OnInit, OnDestroy {
 
   private mapToCollectionStats(stats: Stat): void {
     this.mapToCollectionStatsVolume(stats);
-    this.mapToCollectionStatsChange(stats);
     this.mapToCollectionStatsSales(stats);
     this.mapToCollectionStatsAveragePrice(stats);
   }
@@ -150,12 +142,6 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionStatsVolume.seven_day_volume = stats.seven_day_volume;
     this.collectionStatsVolume.thirty_day_volume = stats.thirty_day_volume;
     this.collectionStatsVolume.total_volume = stats.total_volume;
-  }
-
-  private mapToCollectionStatsChange(stats: Stat) {
-    this.collectionStatsChange.one_day_change = stats.one_day_change;
-    this.collectionStatsChange.seven_day_change = stats.seven_day_change;
-    this.collectionStatsChange.thirty_day_change = stats.thirty_day_change;
   }
 
   private mapToCollectionStatsSales(stats: Stat) {

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Subscription, switchMap } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { AssetDetails, IAsset } from 'src/shared/models/asset.interface';
 import { DialogComponent } from '../shared/dialog/dialog.component';

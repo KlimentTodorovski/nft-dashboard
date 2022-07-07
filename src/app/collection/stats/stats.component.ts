@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { CollectionStatsAveragePrice, CollectionStatsChange, CollectionStatsSales, CollectionStatsVolume } from 'src/shared/models/collection.stats.interface';
+import { CollectionStatsAveragePrice, CollectionStatsSales, CollectionStatsVolume } from 'src/shared/models/collection.stats.interface';
 
 @Component({
   selector: 'app-stats',
@@ -16,12 +16,6 @@ export class StatsComponent implements OnInit {
     seven_day_volume: 0,
     thirty_day_volume: 0,
     total_volume: 0
-  }
-
-  @Input() collectionStatsChange: CollectionStatsChange = {
-    one_day_change: 0,
-    seven_day_change: 0,
-    thirty_day_change: 0
   }
 
   @Input() collectionStatsSales: CollectionStatsSales = {
@@ -58,13 +52,6 @@ export class StatsComponent implements OnInit {
             tension: 0.2,
             borderColor: '#007bff'
           },
-          // // {
-          // //   data: Object.values(this.collectionStatsChange),
-          // //   label: "Change",
-          // //   backgroundColor: '#009900',
-          // //   tension: 0.2,
-          // //   borderColor: '#009900'
-          // // },
           {
             data: Object.values(this.collectionStatsSales),
             label: "Sales",

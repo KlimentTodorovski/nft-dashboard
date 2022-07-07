@@ -14,6 +14,8 @@ export class TraitsComponent implements OnInit, AfterViewInit {
 
   @Input() traits: Trait[] = [];
 
+  public dataSource: MatTableDataSource<Trait> = new MatTableDataSource();
+  public faIcon = faFolderBlank;
   public displayedColumns: string[] = [
     "trait_type",
     "value",
@@ -22,10 +24,6 @@ export class TraitsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort = new MatSort();
-
-  dataSource: MatTableDataSource<Trait> = new MatTableDataSource();
-
-  public faIcon = faFolderBlank;
 
   constructor() { }
 
