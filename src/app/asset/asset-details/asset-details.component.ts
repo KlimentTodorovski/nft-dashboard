@@ -22,7 +22,10 @@ export class AssetDetailsComponent implements OnInit {
   }
 
   public ownerEtherscan: string = 'https://etherscan.io/address/';
-  public creatorEtherscan: string = 'https://etherscan.io/address/'
+  public creatorEtherscan: string = 'https://etherscan.io/address/';
+
+  public owner: string = 'Owner';
+  public creator: string = 'Creator';
 
   constructor() { }
 
@@ -30,6 +33,14 @@ export class AssetDetailsComponent implements OnInit {
     if (this.assetDetails.ownerAddress) {
       this.ownerEtherscan += this.assetDetails.ownerAddress;
       this.creatorEtherscan += this.assetDetails.creatorAddress;
+    }
+
+    if (this.assetDetails.owner) {
+      this.owner = this.assetDetails.owner;
+    }
+
+    if (this.assetDetails.creator) {
+      this.creator = this.assetDetails.creator;
     }
   }
 }

@@ -1,21 +1,21 @@
-<nav class="navbar text-white" style="background-color: white;" >
+<nav class="navbar" >
   <div class="container-fluid" style="justify-content: left;">
     <a class="navbar-brand" href="/assets">
       <img src="../assets/NFT_Icon.png" width="50">
       <span class="text-dark pt-1">Dashboard</span>
     </a>
-    <mat-form-field appearance="outline" class="p-0 me-3">
+    <mat-form-field appearance="outline" class="me-3 padding">
       <mat-label>Search</mat-label>
       <mat-select [(ngModel)]="selectedOption" (selectionChange)="selectChange($event)">
         <mat-option value="0">Collection</mat-option>
         <mat-option value="1">Asset</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="full-width me-3" appearance="outline">
+    <mat-form-field class="full-width me-3 padding" appearance="outline">
       <mat-label> {{ searchByMatLabel }}</mat-label>
       <input matInput #input [(ngModel)]="searchText">
     </mat-form-field>
-    <button mat-button class="btn btn-dark" (click)="search(input.value)">Search</button>
+    <button mat-raised-button color="primary" (click)="search(input.value)">Search</button>
   </div>
 </nav>
 <div class="container">

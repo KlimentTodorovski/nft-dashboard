@@ -68,6 +68,7 @@ export class AssetComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (asset: IAsset) => {
           this.asset = asset;
+          console.log(asset);
           this.mapToAssetDetails(asset);
           this.gettingData = false;
         },

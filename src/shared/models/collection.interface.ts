@@ -9,7 +9,7 @@ export interface Collection {
   editors:                         string[];
   payment_tokens:                  PaymentToken[];
   primary_asset_contracts:         PrimaryAssetContract[];
-  traits:                          Traits;
+  traits:                          Temp;
   stats:                           Stat;
   banner_image_url:                string;
   chat_url:                        null | string;
@@ -84,13 +84,12 @@ export interface PrimaryAssetContract {
   payout_address:                  string;
 }
 
-export interface Traits {
-  background: { [key: string]: number };
-  body:       { [key: string]: number };
-  face:       { [key: string]: number };
-  hair:       { [key: string]: number };
-  head:       { [key: string]: number };
-  piercing:   { [key: string]: number };
+export interface Temp {
+  tmnp: any;
+}
+
+export interface Trait {
+  item: { [key: string]: number } [];
 }
 
 export interface CollectionDetails {

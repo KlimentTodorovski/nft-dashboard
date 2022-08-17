@@ -14,35 +14,6 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <mat-list-item role="listitem">Owned by</mat-list-item>
-    </div>
-    <div class="col">
-      <mat-list-item role="listitem" *ngIf="this.assetDetails.owner">
-        <a [href]="this.ownerEtherscan">
-          {{this.assetDetails.owner}}
-        </a>
-      </mat-list-item>
-      <mat-list-item role="listitem" *ngIf="!this.assetDetails.owner && this.assetDetails.ownerAddress">
-        <a [href]="this.ownerEtherscan">
-          {{this.assetDetails.ownerAddress}}
-        </a>
-      </mat-list-item>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <mat-list-item role="listitem">Contract Address</mat-list-item>
-    </div>
-    <div class="col">
-      <mat-list-item role="listitem">
-        <a [href]="this.assetDetails.etherscan">
-          {{ this.assetDetails.contractAddress }}
-        </a>
-      </mat-list-item>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
       <mat-list-item role="listitem">Token ID</mat-list-item>
     </div>
     <div class="col">
@@ -61,23 +32,16 @@
       </mat-list-item>
     </div>
   </div>
-  <div class="row">
-    <div class="col-3">
-      <mat-list-item role="listitem">Creator</mat-list-item>
-    </div>
-    <div class="col">
-      <mat-list-item role="listitem" *ngIf="this.assetDetails.creator">
-        <a [href]="this.creatorEtherscan">
-          {{ this.assetDetails.creator }}
-        </a>
-      </mat-list-item>
-      <mat-list-item role="listitem" *ngIf="!this.assetDetails.creator && this.assetDetails.creatorAddress">
-        <a [href]="this.creatorEtherscan">
-          {{this.assetDetails.creatorAddress}}
-        </a>
-      </mat-list-item>
-    </div>
+  <div class="row mt-2">
+    <a mat-raised-button color="primary" [href]="this.ownerEtherscan">{{this.owner}}</a>
   </div>
+  <div class="row mt-2">
+    <a mat-raised-button color="primary" [href]="this.assetDetails.etherscan">Contract address</a>
+  </div>
+  <div class="row mt-2">
+    <a mat-raised-button color="primary" [href]="this.creatorEtherscan">{{this.creator}}</a>
+  </div>
+  <br>
   <hr style="margin-top: 0; margin-bottom: 10px;" />
   <div class="row">
     <div class="col ms-3">

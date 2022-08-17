@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { IAssets } from 'src/shared/models/assets.interface';
-import { CollectionDetails, ICollection } from 'src/shared/models/collection.interface';
+import { CollectionDetails, ICollection, Temp } from 'src/shared/models/collection.interface';
 import { CollectionStatsVolume, CollectionStatsSales, CollectionStatsAveragePrice, Stat } from 'src/shared/models/collection.stats.interface';
 
 @Component({
@@ -108,6 +108,9 @@ export class CollectionComponent implements OnInit, OnDestroy {
             this.collection = collection;
             this.mapToCollectionDetails(collection);
             this.mapToCollectionStats(collection.collection.stats);
+            // Object.values(collection.collection.traits).forEach(value => console.log(value));
+
+            // Object.keys(collection.collection.traits).forEach(key => console.log(key));
           },
           error: () => {
             this.navigateToErrorPage();
@@ -115,6 +118,18 @@ export class CollectionComponent implements OnInit, OnDestroy {
       );
     }
   }
+
+  // private mapToTraits(collection: ICollection): void{
+  //   const keys = Object.keys(collection.collection.traits);
+  //   let values: [];
+
+  //   type ObjectKey = keyof typeof Temp;
+
+  //   keys.forEach(element => {
+  //     const t = element.toString;
+  //       console.log(collection.collection.traits)
+  //   });
+  // }
 
   private mapToCollectionDetails(collection: ICollection): void {
     this.collectionDetails.image_url = collection.collection.image_url;
