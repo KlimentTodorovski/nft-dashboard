@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
+import { Trait } from 'src/shared/models/asset.interface';
 import { IAssets } from 'src/shared/models/assets.interface';
-import { CollectionDetails, ICollection, Temp } from 'src/shared/models/collection.interface';
+import { CollectionDetails, ICollection, ITrait } from 'src/shared/models/collection.interface';
 import { CollectionStatsVolume, CollectionStatsSales, CollectionStatsAveragePrice, Stat } from 'src/shared/models/collection.stats.interface';
 
 @Component({
@@ -15,6 +16,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
 
   public collection: ICollection | undefined;
   public assets: IAssets | undefined;
+  public traits: Trait[] = [];
 
   public slug: string = '';
   public gettingData: boolean = true;
@@ -108,9 +110,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
             this.collection = collection;
             this.mapToCollectionDetails(collection);
             this.mapToCollectionStats(collection.collection.stats);
-            // Object.values(collection.collection.traits).forEach(value => console.log(value));
-
-            // Object.keys(collection.collection.traits).forEach(key => console.log(key));
+            this.mapToTraits(collection.collection.traits);
           },
           error: () => {
             this.navigateToErrorPage();
@@ -119,17 +119,26 @@ export class CollectionComponent implements OnInit, OnDestroy {
     }
   }
 
-  // private mapToTraits(collection: ICollection): void{
-  //   const keys = Object.keys(collection.collection.traits);
-  //   let values: [];
+  private mapToTraits(traits: ITrait): void{
+    const keys = Object.keys(traits);
+    const values = Object.values(traits);
 
-  //   type ObjectKey = keyof typeof Temp;
+    for (let i = 0; i < keys.length; i++) {
 
-  //   keys.forEach(element => {
-  //     const t = element.toString;
-  //       console.log(collection.collection.traits)
-  //   });
-  // }
+      const k = Object.keys(values[i]);
+      const v = Object.values(values[i]);
+
+      for (let j = 0; j < k.length; j++) {
+        let trait: Trait = {
+          trait_type: keys[i],
+          value: k[j],
+          trait_count: v[j] as number
+        }
+
+        this.traits.push(trait);
+      }
+    }
+  }
 
   private mapToCollectionDetails(collection: ICollection): void {
     this.collectionDetails.image_url = collection.collection.image_url;

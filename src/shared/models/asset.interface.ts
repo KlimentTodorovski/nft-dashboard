@@ -122,10 +122,7 @@ export interface TopOwnership {
 export interface Trait {
   trait_type:   string;
   value:        string;
-  display_type: null | string;
-  max_value:    null | string;
   trait_count:  number;
-  order:        null | string;
 }
 
 export interface AssetDetails {
