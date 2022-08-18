@@ -48,6 +48,11 @@ export interface DisplayData {
   card_display_style: string;
 }
 
+export interface Editor {
+  editor: string;
+  link: string;
+}
+
 export interface PaymentToken {
   id:        number;
   symbol:    string;
