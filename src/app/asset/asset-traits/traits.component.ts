@@ -13,6 +13,7 @@ import { faFolderBlank } from '@fortawesome/free-solid-svg-icons';
 export class TraitsComponent implements OnInit, AfterViewInit {
 
   @Input() traits: Trait[] = [];
+  @Input() pagination: number[] = [];
 
   public dataSource: MatTableDataSource<Trait> = new MatTableDataSource();
   public faIcon = faFolderBlank;

@@ -14,11 +14,11 @@
                      [collectionStatsSales]="collectionStatsSales"
                      [collectionStatsAveragePrice]="collectionStatsAveragePrice"></app-stats>
         </mat-tab>
+        <mat-tab label="Traits">
+          <asset-traits [traits]="traits" [pagination]="[5, 10, 20]"></asset-traits>
+        </mat-tab>
         <mat-tab label="Editors">
           <app-editors></app-editors>
-        </mat-tab>
-        <mat-tab label="Traits">
-          <asset-traits [traits]="traits"></asset-traits>
         </mat-tab>
       </mat-tab-group>
 <!--
