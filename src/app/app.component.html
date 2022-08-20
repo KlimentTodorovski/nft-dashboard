@@ -15,7 +15,10 @@
       <mat-label> {{ searchByMatLabel }}</mat-label>
       <input matInput #input [(ngModel)]="searchText">
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="search(input.value)">Search</button>
+    <button mat-raised-button color="primary" (click)="search(input.value)">
+      <fa-icon class="mb-4" [icon]="fa_search"></fa-icon>
+      Search
+    </button>
   </div>
 </nav>
 <div class="container">

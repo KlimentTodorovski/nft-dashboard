@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ export class AppComponent implements OnInit {
   searchByMatLabel: string = 'Collection slug...';
   selectedOption: string = '0';
   searchText: string = '';
+
+  public fa_search = faSearch;
 
   constructor(private router: Router) { }
 
