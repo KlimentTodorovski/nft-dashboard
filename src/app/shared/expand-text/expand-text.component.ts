@@ -19,6 +19,10 @@ export class ExpandTextComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.description) {
+      this.description = '';
+    }
+
     if (this.description.length > this.truncateSize) {
       this._description = this.description.slice(0, this.truncateSize) + '...';
     }

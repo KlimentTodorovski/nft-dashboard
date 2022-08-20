@@ -43,7 +43,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
 
         this.gettingData = false;
 
-        if (this._assets.length < 30) {
+        if (this._assets.length < 30 && this.next) {
           this.getAssets();
         }
       }
@@ -59,6 +59,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
   public onScrollDown(event: any) {
     this.getAssetsSubscription?.unsubscribe();
 
-    this.getAssets();
+    if (this.next) {
+      this.getAssets();
+    }
   }
 }
