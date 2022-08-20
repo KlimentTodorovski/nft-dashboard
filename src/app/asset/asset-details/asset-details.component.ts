@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { AssetDetails } from 'src/shared/models/asset.interface';
 
 @Component({
@@ -26,6 +27,8 @@ export class AssetDetailsComponent implements OnInit {
 
   public owner: string = 'Owner';
   public creator: string = 'Creator';
+
+  public faIconExternalLink = faExternalLink;
 
   constructor() { }
 

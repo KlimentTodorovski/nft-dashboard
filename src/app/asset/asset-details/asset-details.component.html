@@ -32,18 +32,75 @@
       </mat-list-item>
     </div>
   </div>
-  <div class="row mt-2">
-    <div class="col-4">
-      <a mat-raised-button color="primary" class="d-grid gap-2" [href]="this.ownerEtherscan">{{this.owner}}</a>
+  <div class="row">
+    <div class="col-3">
+      <mat-list-item role="listitem">Creator</mat-list-item>
     </div>
-    <div class="col-4">
-      <a mat-raised-button color="primary" class="d-grid gap-2" [href]="this.assetDetails.etherscan">Contract address</a>
+    <div class="col">
+      <mat-list-item role="listitem" *ngIf="this.assetDetails.creator">
+        {{ this.assetDetails.creator }}
+      </mat-list-item>
+      <mat-list-item role="listitem" *ngIf="!this.assetDetails.creator && this.assetDetails.creatorAddress">
+        {{this.assetDetails.creatorAddress}}
+      </mat-list-item>
     </div>
-    <div class="col-4">
-      <a mat-raised-button color="primary" class="d-grid gap-2" [href]="this.creatorEtherscan">{{this.creator}}</a>
+    <div class="col">
+      <mat-list-item role="listitem" class="under">
+        <a [href]="creatorEtherscan"
+           [matTooltip]="'Open address in etherscan'"
+           [matTooltipPosition]="'above'"
+           style="color: #673ab7;"
+           class="ms-3 float-end">
+          <fa-icon [icon]="faIconExternalLink"></fa-icon>
+        </a>
+      </mat-list-item>
     </div>
   </div>
-  <br>
+  <div class="row">
+    <div class="col-3">
+      <mat-list-item role="listitem">Contract Address</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem">
+        {{ this.assetDetails.contractAddress }}
+      </mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem" class="under">
+        <a [href]="this.assetDetails.etherscan"
+           [matTooltip]="'Open contract in etherscan'"
+           [matTooltipPosition]="'above'"
+           style="color: #673ab7;"
+           class="ms-3">
+          <fa-icon [icon]="faIconExternalLink"></fa-icon>
+        </a>
+      </mat-list-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <mat-list-item role="listitem">Owned by</mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem" *ngIf="this.assetDetails.owner">
+        {{this.assetDetails.owner}}
+      </mat-list-item>
+      <mat-list-item role="listitem" *ngIf="!this.assetDetails.owner && this.assetDetails.ownerAddress">
+        {{this.assetDetails.ownerAddress}}
+      </mat-list-item>
+    </div>
+    <div class="col">
+      <mat-list-item role="listitem" class="under">
+        <a [href]="ownerEtherscan"
+           [matTooltip]="'Open address in etherscan'"
+           [matTooltipPosition]="'above'"
+           style="color: #673ab7;"
+           class="ms-3 float-end">
+          <fa-icon [icon]="faIconExternalLink"></fa-icon>
+        </a>
+      </mat-list-item>
+    </div>
+  </div>
   <hr style="margin-top: 0; margin-bottom: 10px;" />
   <div class="row">
     <div class="col ms-3">

@@ -5,3 +5,7 @@
 a {
   text-decoration: none;
 }
+
+::ng-deep .under .mat-list-item-content{
+  float: right;
+}
