@@ -33,7 +33,8 @@ export class AppComponent implements OnInit {
 
   public search(input: string): void {
     if (this.selectedOption === '0') {
-      this.router.navigate([`/collections/${input}`]);
+      let s = input.replace(/[^a-zA-Z0-9]/g, "");
+      this.router.navigate([`/collections/${s}`]);
     } else if (this.selectedOption === '1') {
       if (input.split('/').length === 1) {
         input = input + '/0'
