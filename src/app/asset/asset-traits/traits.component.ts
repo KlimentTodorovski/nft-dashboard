@@ -33,6 +33,8 @@ export class TraitsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.traits.forEach(x => x.trait_count = x.trait_count + 1);
+
     this.dataSource.data = this.traits;
 
     this.dataSource.sortingDataAccessor = (item, property) => {
