@@ -13,7 +13,7 @@
     </mat-form-field>
     <mat-form-field class="full-width me-3 padding" appearance="outline">
       <mat-label> {{ searchByMatLabel }}</mat-label>
-      <input matInput #input [(ngModel)]="searchText">
+      <input matInput #input [(ngModel)]="searchText" (keyup.enter)="search(input.value)">
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="search(input.value)">
       <fa-icon class="mb-4" [icon]="fa_search"></fa-icon>
