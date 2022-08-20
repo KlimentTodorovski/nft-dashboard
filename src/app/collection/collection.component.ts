@@ -38,7 +38,12 @@ export class CollectionComponent implements OnInit, OnDestroy {
     num_owners: 0,
     total_volume: 0,
     eth_picture: '',
-    eth_usd_price: 0
+    eth_usd_price: 0,
+    telegram_url: '',
+    twitter_username: '',
+    instagram_username: '',
+    wiki_url: '',
+    slug: ''
   }
 
   public collectionStatsVolume: CollectionStatsVolume = {
@@ -158,6 +163,11 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionDetails.total_volume = collection.collection.stats.total_volume;
     this.collectionDetails.eth_picture = eth_payment_token.image_url;
     this.collectionDetails.eth_usd_price = eth_payment_token.usd_price;
+    this.collectionDetails.telegram_url = collection.collection.telegram_url ?? '';
+    this.collectionDetails.twitter_username = collection.collection.twitter_username ?? '';
+    this.collectionDetails.instagram_username = collection.collection.instagram_username ?? '';
+    this.collectionDetails.wiki_url = collection.collection.wiki_url ?? '';
+    this.collectionDetails.slug = collection.collection.slug;
   }
 
   private mapToCollectionStats(stats: Stat): void {

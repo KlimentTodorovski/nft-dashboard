@@ -25,8 +25,15 @@ export class CollectionDetailsComponent implements OnInit {
     num_owners: 0,
     total_volume: 0,
     eth_picture: '',
-    eth_usd_price: 0
+    eth_usd_price: 0,
+    instagram_username: '',
+    telegram_url: '',
+    twitter_username: '',
+    wiki_url: '',
+    slug: ''
   };
+
+  public open_sea_link: string = 'https://opensea.io/collection/';
 
   public faIconExternalLink = faExternalLink;
   public etherscan: string = 'https://etherscan.io/address/';
@@ -38,6 +45,8 @@ export class CollectionDetailsComponent implements OnInit {
 
     this.collectionDetails.total_volume = Math.round((this.collectionDetails.total_volume + Number.EPSILON) * 1000) / 1000;
     this.collectionDetails.floor_price = Math.round((this.collectionDetails.floor_price + Number.EPSILON) * 1000) / 1000;
+
+    this.open_sea_link = this.open_sea_link + this.collectionDetails.slug;
   }
 
   openDialog(): void {

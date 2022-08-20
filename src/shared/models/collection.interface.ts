@@ -38,7 +38,7 @@ export interface Collection {
   short_description:               null | string;
   slug:                            string;
   telegram_url:                    null | string;
-  twitter_username:                string;
+  twitter_username:                null | string;
   instagram_username:              null | string;
   wiki_url:                        null | string;
   is_nsfw:                         boolean;
@@ -107,4 +107,9 @@ export interface CollectionDetails {
   total_volume: number;
   eth_picture: string;
   eth_usd_price: number;
+  telegram_url: string;
+  twitter_username: string;
+  instagram_username: string;
+  wiki_url: string;
+  slug: string;
 }

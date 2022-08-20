@@ -18,7 +18,15 @@
            mat-raised-button>
       </ng-template>
 </div>
-<h3>{{collectionDetails.name}}</h3>
+<h3>
+  {{collectionDetails.name}}
+  <a [href]="open_sea_link"
+    [matTooltip]="'Open collection in OpenSea'"
+    [matTooltipPosition]="'right'"
+    style="color: #673ab7;">
+    <fa-icon [icon]="faIconExternalLink"></fa-icon>
+  </a>
+</h3>
 <div>
   <app-expand-text [description]="collectionDetails.description" [truncateSize]="130"></app-expand-text>
 </div>
