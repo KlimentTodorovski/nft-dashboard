@@ -19,6 +19,7 @@ export class AssetComponent implements OnInit, OnDestroy {
   public tokenId: string = '';
   public gettingData: boolean = true;
   public etherscan: string = 'https://etherscan.io/address/';
+  public asset_open_sea_link: string = '';
 
   private getAssetSubscription: Subscription | undefined;
   private getRouteParamsSubscription: Subscription | undefined;
@@ -69,6 +70,7 @@ export class AssetComponent implements OnInit, OnDestroy {
         next: (asset: IAsset) => {
           this.asset = asset;
           this.mapToAssetDetails(asset);
+          this.asset_open_sea_link = 'https://opensea.io/assets/ethereum/' + this.assetContractAddress + '/' + this.tokenId;
           this.gettingData = false;
         },
         error: () => {
