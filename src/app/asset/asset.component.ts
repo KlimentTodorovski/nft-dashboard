@@ -86,7 +86,7 @@ export class AssetComponent implements OnInit, OnDestroy {
   private mapToAssetDetails(asset: IAsset) {
     this.assetDetails.contractAddress = this.assetContractAddress;
     this.assetDetails.createdDate = asset.asset_contract.created_date;
-    this.assetDetails.creator = asset.creator.user.username;
+    this.assetDetails.creator = asset.creator.user?.username ?? '';
     this.assetDetails.etherscan = this.etherscan;
     this.assetDetails.name = asset.name ?? 'N/A';
     this.assetDetails.owner = asset.top_ownerships[0].owner.user?.username ?? '';
