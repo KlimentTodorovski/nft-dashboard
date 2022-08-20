@@ -115,7 +115,6 @@ export class CollectionComponent implements OnInit, OnDestroy {
         .getCollection(this.slug)
         .subscribe({
           next: (collection: ICollection) => {
-            console.log(collection);
             this.collection = collection;
             this.mapToCollectionDetails(collection);
             this.mapToCollectionStats(collection.collection.stats);
@@ -171,7 +170,7 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionDetails.wiki_url = collection.collection.wiki_url ?? '';
     this.collectionDetails.slug = collection.collection.slug;
     this.collectionDetails.discord_url = collection.collection.discord_url ?? '';
-    this.collectionDetails.official_url = collection.collection.primary_asset_contracts[0].external_link ?? '';
+    this.collectionDetails.official_url = collection.collection.primary_asset_contracts[0]?.external_link ?? '';
   }
 
   private mapToCollectionStats(stats: Stat): void {

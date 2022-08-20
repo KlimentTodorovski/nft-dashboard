@@ -35,7 +35,6 @@ export class EditorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.editors);
     this.editors.forEach(element => {
       let item: Editor = {
         editor: element,
