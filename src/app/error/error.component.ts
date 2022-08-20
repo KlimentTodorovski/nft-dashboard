@@ -26,6 +26,8 @@ export class ErrorComponent implements OnInit, OnDestroy {
       .subscribe(params => {
         if (params['collectionSlug']) {
           this.errorMessage = `The collection: ${params['collectionSlug']} does not exists.`;
+        } else if (params['contractAddress'] && params['tokenId'] === "0") {
+          this.errorMessage = 'The format for asset search should be "Contract address / token ID".';
         } else if (params['contractAddress'] && params['tokenId']) {
           this.errorMessage = `The asset with contract address: ${params['contractAddress']} and token id: ${params['tokenId']} does not exists.`;
         }

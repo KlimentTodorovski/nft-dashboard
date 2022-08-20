@@ -32,6 +32,10 @@ export class AppComponent implements OnInit {
     if (this.selectedOption === '0') {
       this.router.navigate([`/collections/${input}`]);
     } else if (this.selectedOption === '1') {
+      if (input.split('/').length === 1) {
+        input = input + '/0'
+      }
+
       this.router.navigate([`/assets/${input}`]);
     }
 
