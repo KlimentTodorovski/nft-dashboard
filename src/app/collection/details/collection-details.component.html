@@ -23,45 +23,46 @@
   <a [href]="open_sea_link"
     [matTooltip]="'Open collection in OpenSea'"
     [matTooltipPosition]="'above'"
-    style="color: #673ab7;">
+    style="color: #673ab7;"
+    target="_blank">
     <fa-icon [icon]="faIconExternalLink"></fa-icon>
   </a>
-  <a *ngIf="collectionDetails.official_url" [href]="collectionDetails.official_url">
+  <a *ngIf="collectionDetails.official_url" [href]="collectionDetails.official_url" target="_blank">
     <img src="../../../assets/download.png"
          style="height: 25px; cursor: pointer; margin-bottom: 5px;"
          [matTooltip]="'Open official website'"
          [matTooltipPosition]="'above'"
          class="ms-2">
   </a>
-  <a *ngIf="collectionDetails.twitter_username" [href]="collectionDetails.twitter_username">
+  <a *ngIf="collectionDetails.twitter_username" [href]="collectionDetails.twitter_username" target="_blank">
     <img src="../../../assets/twitter-icon.svg"
          style="height: 26px; cursor: pointer; margin-bottom: 5px;"
          [matTooltip]="'Open twitter profile'"
          [matTooltipPosition]="'above'"
          class="ms-2">
   </a>
-  <a *ngIf="collectionDetails.instagram_username" [href]="collectionDetails.instagram_username">
+  <a *ngIf="collectionDetails.instagram_username" [href]="collectionDetails.instagram_username" target="_blank">
     <img src="../../../assets/Instagram_logo_2016.svg.png"
          style="height: 25px; cursor: pointer; margin-bottom: 4px;"
          [matTooltip]="'Open instagram profile'"
          [matTooltipPosition]="'above'"
          class="ms-2">
   </a>
-  <a *ngIf="collectionDetails.discord_url" [href]="collectionDetails.discord_url">
+  <a *ngIf="collectionDetails.discord_url" [href]="collectionDetails.discord_url" target="_blank">
     <img src="../../../assets/discord-icon.svg"
          style="height: 25px; cursor: pointer; margin-bottom: 5px;"
          [matTooltip]="'Open discord profile'"
          [matTooltipPosition]="'above'"
          class="ms-2">
   </a>
-  <a *ngIf="collectionDetails.wiki_url" [href]="collectionDetails.wiki_url">
+  <a *ngIf="collectionDetails.wiki_url" [href]="collectionDetails.wiki_url" target="_blank">
     <img src="../../../assets/Wikipedia's_W.svg.png"
          style="height: 26px; cursor: pointer; margin-bottom: 5px;"
          [matTooltip]="'Open wikipedia profile'"
          [matTooltipPosition]="'above'"
          class="ms-2">
   </a>
-  <a *ngIf="collectionDetails.telegram_url" [href]="collectionDetails.telegram_url">
+  <a *ngIf="collectionDetails.telegram_url" [href]="collectionDetails.telegram_url" target="_blank">
     <img src="../../../assets/Telegram_logo.svg.webp"
          style="height: 26px; cursor: pointer; margin-bottom: 5px;"
          [matTooltip]="'Open telegram profile'"
@@ -126,7 +127,8 @@
            [matTooltip]="'Open address in etherscan'"
            [matTooltipPosition]="'above'"
            *ngIf="collectionDetails.payout_address; else elseBlock"
-           style="color: #673ab7;">
+           style="color: #673ab7;"
+           target="_blank">
           <fa-icon [icon]="faIconExternalLink"></fa-icon>
         </a>
       </h4>
