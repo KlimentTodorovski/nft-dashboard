@@ -45,7 +45,10 @@
   <div class="inline ms-5">
     <span>
       <div class="image-txt-container">
-        <img [src]="collectionDetails.eth_picture" style="height: 20px;">
+        <img [src]="collectionDetails.eth_picture"
+             style="height: 20px; cursor: pointer"
+             [matTooltip]="'ETH | ' + collectionDetails.eth_usd_price + '$'"
+             [matTooltipPosition]="'above'">
         <h4 class="mb-0 ps-1">{{collectionDetails.floor_price}}</h4>
       </div>
     </span>
@@ -56,7 +59,10 @@
   <div class="inline ms-5">
     <span>
       <div class="image-txt-container">
-        <img [src]="collectionDetails.eth_picture" style="height: 20px;">
+        <img [src]="collectionDetails.eth_picture"
+             style="height: 20px; cursor: pointer"
+             [matTooltip]="'ETH | ' + collectionDetails.eth_usd_price + '$'"
+             [matTooltipPosition]="'above'">
         <h4 class="mb-0 ps-1">{{collectionDetails.total_volume}}</h4>
       </div>
     </span>

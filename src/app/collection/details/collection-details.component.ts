@@ -24,7 +24,8 @@ export class CollectionDetailsComponent implements OnInit {
     items_count: 0,
     num_owners: 0,
     total_volume: 0,
-    eth_picture: ''
+    eth_picture: '',
+    eth_usd_price: 0
   };
 
   public faIconExternalLink = faExternalLink;

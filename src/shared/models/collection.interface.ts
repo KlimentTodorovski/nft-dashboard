@@ -106,4 +106,5 @@ export interface CollectionDetails {
   floor_price: number;
   total_volume: number;
   eth_picture: string;
+  eth_usd_price: number;
 }

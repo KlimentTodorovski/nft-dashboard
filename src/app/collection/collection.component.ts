@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { DataService } from 'src/core/services/data.service';
 import { Trait } from 'src/shared/models/asset.interface';
 import { IAssets } from 'src/shared/models/assets.interface';
-import { CollectionDetails, ICollection, ITrait } from 'src/shared/models/collection.interface';
+import { CollectionDetails, ICollection, ITrait, PaymentToken } from 'src/shared/models/collection.interface';
 import { CollectionStatsVolume, CollectionStatsSales, CollectionStatsAveragePrice, Stat } from 'src/shared/models/collection.stats.interface';
 
 @Component({
@@ -37,7 +37,8 @@ export class CollectionComponent implements OnInit, OnDestroy {
     items_count: 0,
     num_owners: 0,
     total_volume: 0,
-    eth_picture: ''
+    eth_picture: '',
+    eth_usd_price: 0
   }
 
   public collectionStatsVolume: CollectionStatsVolume = {
@@ -142,6 +143,8 @@ export class CollectionComponent implements OnInit, OnDestroy {
   }
 
   private mapToCollectionDetails(collection: ICollection): void {
+    const eth_payment_token: PaymentToken = collection.collection.payment_tokens.filter(x => x.symbol === 'ETH')[0];
+
     this.collectionDetails.image_url = collection.collection.image_url;
     this.collectionDetails.banner_image_url = collection.collection.banner_image_url;
     this.collectionDetails.created_date = collection.collection.created_date;
@@ -153,7 +156,8 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionDetails.items_count = collection.collection.stats.count;
     this.collectionDetails.num_owners = collection.collection.stats.num_owners;
     this.collectionDetails.total_volume = collection.collection.stats.total_volume;
-    this.collectionDetails.eth_picture = collection.collection.payment_tokens[0].image_url;
+    this.collectionDetails.eth_picture = eth_payment_token.image_url;
+    this.collectionDetails.eth_usd_price = eth_payment_token.usd_price;
   }
 
   private mapToCollectionStats(stats: Stat): void {
