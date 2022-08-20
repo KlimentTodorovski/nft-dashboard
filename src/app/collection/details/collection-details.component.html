@@ -68,7 +68,7 @@
       total volume
     </span>
   </div>
-  <div class="inline ms-5">
+  <div class="inline ms-5" *ngIf="collectionDetails.payout_address">
     <span>
       <h4 class="mb-0 text-dark">
         {{collectionDetails.payout_address}}
