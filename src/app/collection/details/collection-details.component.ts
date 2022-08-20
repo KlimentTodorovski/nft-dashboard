@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { CollectionDetails } from 'src/shared/models/collection.interface';
 
@@ -26,6 +27,7 @@ export class CollectionDetailsComponent implements OnInit {
     eth_picture: ''
   };
 
+  public faIconExternalLink = faExternalLink;
   public etherscan: string = 'https://etherscan.io/address/';
 
   constructor(public dialog: MatDialog) { }

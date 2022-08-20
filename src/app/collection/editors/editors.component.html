@@ -16,7 +16,10 @@
     <ng-container matColumnDef="link">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let row">
-        <a [href]="row.link" style="color: #673ab7;">
+        <a [href]="row.link"
+           style="color: #673ab7;"
+           [matTooltip]="'Open address in etherscan'"
+           [matTooltipPosition]="'above'">
           <fa-icon [icon]="faIconExternalLink"></fa-icon>
         </a>
       </td>

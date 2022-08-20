@@ -107,8 +107,8 @@ export class CollectionComponent implements OnInit, OnDestroy {
         .getCollection(this.slug)
         .subscribe({
           next: (collection: ICollection) => {
-            this.collection = collection;
             console.log(collection);
+            this.collection = collection;
             this.mapToCollectionDetails(collection);
             this.mapToCollectionStats(collection.collection.stats);
             this.mapToTraits(collection.collection.traits);

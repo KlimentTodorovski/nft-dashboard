@@ -66,9 +66,16 @@
   </div>
   <div class="inline ms-5">
     <span>
-      <a [href]="etherscan" *ngIf="collectionDetails.payout_address; else elseBlock">
-        <h4 class="mb-0 text-dark">{{collectionDetails.payout_address}}</h4>
-      </a>
+      <h4 class="mb-0 text-dark">
+        {{collectionDetails.payout_address}}
+        <a [href]="etherscan"
+           [matTooltip]="'Open address in etherscan'"
+           [matTooltipPosition]="'above'"
+           *ngIf="collectionDetails.payout_address; else elseBlock"
+           style="color: #673ab7;">
+          <fa-icon [icon]="faIconExternalLink"></fa-icon>
+        </a>
+      </h4>
       <ng-template #elseBlock>
         <div>
           <h4 class="mb-0">N/A</h4>
