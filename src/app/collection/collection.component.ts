@@ -43,7 +43,9 @@ export class CollectionComponent implements OnInit, OnDestroy {
     twitter_username: '',
     instagram_username: '',
     wiki_url: '',
-    slug: ''
+    slug: '',
+    discord_url: '',
+    official_url: ''
   }
 
   public collectionStatsVolume: CollectionStatsVolume = {
@@ -168,6 +170,8 @@ export class CollectionComponent implements OnInit, OnDestroy {
     this.collectionDetails.instagram_username = collection.collection.instagram_username ?? '';
     this.collectionDetails.wiki_url = collection.collection.wiki_url ?? '';
     this.collectionDetails.slug = collection.collection.slug;
+    this.collectionDetails.discord_url = collection.collection.discord_url ?? '';
+    this.collectionDetails.official_url = collection.collection.primary_asset_contracts[0].external_link ?? '';
   }
 
   private mapToCollectionStats(stats: Stat): void {

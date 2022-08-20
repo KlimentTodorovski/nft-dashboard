@@ -30,7 +30,9 @@ export class CollectionDetailsComponent implements OnInit {
     telegram_url: '',
     twitter_username: '',
     wiki_url: '',
-    slug: ''
+    slug: '',
+    discord_url: '',
+    official_url: ''
   };
 
   public open_sea_link: string = 'https://opensea.io/collection/';
@@ -47,6 +49,18 @@ export class CollectionDetailsComponent implements OnInit {
     this.collectionDetails.floor_price = Math.round((this.collectionDetails.floor_price + Number.EPSILON) * 1000) / 1000;
 
     this.open_sea_link = this.open_sea_link + this.collectionDetails.slug;
+
+    this.setLinks();
+  }
+
+  public setLinks(): void {
+    if (this.collectionDetails.twitter_username) {
+      this.collectionDetails.twitter_username = 'https://twitter.com/' + this.collectionDetails.twitter_username;
+    }
+
+    if (this.collectionDetails.instagram_username) {
+      this.collectionDetails.instagram_username = 'https://www.instagram.com/' + this.collectionDetails.instagram_username;
+    }
   }
 
   openDialog(): void {

@@ -112,4 +112,6 @@ export interface CollectionDetails {
   instagram_username: string;
   wiki_url: string;
   slug: string;
+  discord_url: string;
+  official_url: string;
 }
